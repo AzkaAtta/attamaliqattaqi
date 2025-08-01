@@ -9,13 +9,18 @@ const metadata = {
     'jasa like instagram, beli like instagram, tambah like instagram, like instagram murah, jasa like real, jasa like aman, jasa sosial media, auradigital',
 };
 
-// Ganti sesuai lokasi gambar di proyekmu
 import heroImage from '~/assets/images/instagram.webp';
 
 // Nomor WhatsApp & text pesan otomatis
 const whatsappNumber = '6281234567890';
-const whatsappText = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram.');
+
+// Untuk tombol utama
+const whatsappText = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Real Human.');
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
+
+// Untuk tombol khusus Bot/Server
+const whatsappTextBot = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Server/Bot.');
+const whatsappLinkBot = `https://wa.me/${whatsappNumber}?text=${whatsappTextBot}`;
 ---
 
 <Layout metadata={metadata}>
@@ -29,7 +34,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
       height={500} 
     />
 
-    <!-- Tombol WhatsApp -->
+    <!-- Tombol WhatsApp Utama -->
     <div class="text-center mb-8">
       <a 
         href={whatsappLink} 
@@ -43,52 +48,62 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
       </p>
     </div>
 
+    <!-- Tabel Harga -->
+    <div class="overflow-x-auto mb-12">
+      <table class="min-w-full border border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+        <thead class="bg-gray-100 dark:bg-gray-800">
+          <tr>
+            <th class="px-4 py-3 border-b">Paket</th>
+            <th class="px-4 py-3 border-b">Harga</th>
+            <th class="px-4 py-3 border-b">Jenis Like</th>
+            <th class="px-4 py-3 border-b">Pesan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="px-4 py-3 border-b">1.000 Like</td>
+            <td class="px-4 py-3 border-b">Rp 50.000</td>
+            <td class="px-4 py-3 border-b">Real Human</td>
+            <td class="px-4 py-3 border-b text-center">
+              <a href={whatsappLink} target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
+                Pesan
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 border-b">1.000 Like</td>
+            <td class="px-4 py-3 border-b">Rp 20.000</td>
+            <td class="px-4 py-3 border-b">Server / Bot</td>
+            <td class="px-4 py-3 border-b text-center">
+              <a href={whatsappLinkBot} target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
+                Pesan Bot
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <!-- Deskripsi Panjang -->
     <div class="prose dark:prose-invert max-w-none">
       <h1>Jasa Like Instagram Murah, Real & Aman</h1>
       <p>
-        Apakah Anda ingin postingan Instagram terlihat lebih populer, ramai interaksi,
-        dan berpeluang masuk ke halaman Explore? AuraDigital hadir dengan
-        <strong>jasa like Instagram murah</strong> yang aman, real, dan cepat
-        untuk meningkatkan engagement akun Anda.
+        Dengan layanan ini, Anda bisa memilih antara <strong>like real human</strong> 
+        yang aman untuk akun jangka panjang, atau <strong>like server/bot</strong> 
+        untuk hasil cepat dengan harga lebih murah. Kami transparan agar Anda 
+        bisa memilih sesuai kebutuhan.
       </p>
 
-      <h2>Kenapa Perlu Tambah Like Instagram?</h2>
-      <p>
-        Like adalah salah satu metrik utama yang diperhatikan algoritma Instagram.
-        Semakin banyak like pada postingan Anda, semakin tinggi peluang postingan
-        muncul di halaman <em>Explore</em> dan mendapatkan audiens baru. 
-        Dengan bantuan layanan kami, Anda tidak perlu menunggu lama untuk 
-        mendapatkan interaksi yang nyata.
-      </p>
-
-      <h2>Kelebihan Menggunakan Jasa Like Instagram AuraDigital</h2>
+      <h2>Kenapa Memilih Layanan Kami?</h2>
       <ul>
-        <li><strong>Like Real & Aman:</strong> Semua like berasal dari akun aktif yang aman untuk akun Anda.</li>
-        <li><strong>Proses Cepat:</strong> Like mulai masuk dalam hitungan menit setelah order diproses.</li>
-        <li><strong>Harga Terjangkau:</strong> Paket fleksibel sesuai kebutuhan.</li>
-        <li><strong>Support Semua Jenis Postingan:</strong> Termasuk foto, video feed, dan reels.</li>
+        <li>Harga transparan & bisa pilih tipe layanan</li>
+        <li>Like real human untuk keamanan akun</li>
+        <li>Opsi server/bot untuk hasil cepat & hemat</li>
+        <li>Proses cepat, mulai dalam hitungan menit</li>
       </ul>
 
-      <h2>Cara Order</h2>
-      <ol>
-        <li>Pilih paket jasa like Instagram sesuai kebutuhan Anda.</li>
-        <li>Kirimkan link postingan Instagram yang ingin ditambahkan like.</li>
-        <li>Proses otomatis dimulai dan like akan masuk secara bertahap.</li>
-        <li>Tunggu hingga postingan terlihat lebih populer dan menarik audiens baru.</li>
-      </ol>
-
-      <h2>Tips Aman</h2>
       <p>
-        Agar akun tetap aman, jangan posting terlalu banyak dalam sehari dan fokus pada
-        konten yang berkualitas. Kombinasikan like dengan interaksi alami agar
-        pertumbuhan terlihat natural.
-      </p>
-
-      <h2>Siap Memesan?</h2>
-      <p>
-        Klik tombol WhatsApp di atas untuk memesan sekarang dan nikmati postingan yang
-        lebih populer, engagement naik, dan peluang lebih besar untuk viral!
+        Klik tombol WhatsApp di atas untuk memesan paket yang Anda inginkan sekarang!
       </p>
     </div>
   </section>
