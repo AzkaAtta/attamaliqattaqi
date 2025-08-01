@@ -12,24 +12,22 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
-<script type="application/ld+json" is:inline>
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Aura Digital",
-    "url": "https://auradigital.id",
-    "logo": "https://auradigital.id/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/auradigital.id",
-      "https://www.facebook.com/auradigital.id"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+62-812-3456-7890",
-      "contactType": "Customer Support"
-    }
-  })}
-</script>
+<script set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Aura Digital",
+  "url": "https://auradigital.id",
+  "logo": "https://auradigital.id/logo.png",
+  "sameAs": [
+    "https://www.instagram.com/auradigital.id",
+    "https://www.facebook.com/auradigital.id"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+62-812-3456-7890",
+    "contactType": "Customer Support"
+  }
+})}></script>
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
