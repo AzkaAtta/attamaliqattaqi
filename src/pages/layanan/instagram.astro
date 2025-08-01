@@ -1,0 +1,40 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Jasa Instagram | Like, View, Komentar & Followers Aman',
+  description:
+    'Optimalkan akun Instagram Anda dengan jasa like, view, komentar, dan followers yang aman, cepat, dan real dari AuraDigital.',
+};
+---
+
+<Layout metadata={metadata}>
+  <Features2
+    title="Layanan Instagram Kami"
+    subtitle="Pilih jenis layanan Instagram sesuai kebutuhan Anda"
+    columns={3}
+    items={[
+      {
+        title: 'Jasa Like Instagram',
+        description: 'Tingkatkan interaksi di postingan Anda dengan like real & cepat.',
+        icon: 'tabler:heart-filled',
+      },
+      {
+        title: 'Jasa View Instagram',
+        description: 'Perbesar jumlah penonton reels atau video Anda dengan view organik.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Jasa Komentar Instagram',
+        description: 'Dapatkan komentar positif dan natural untuk meningkatkan engagement.',
+        icon: 'tabler:message-circle-2',
+      },
+      {
+        title: 'Jasa Followers Instagram',
+        description: 'Perbesar audiens akun dengan followers aktif dan aman.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+</Layout>
