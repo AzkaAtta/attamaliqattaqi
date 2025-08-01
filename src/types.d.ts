@@ -61,7 +61,6 @@ export interface MetaData {
 
   openGraph?: MetaDataOpenGraph;
   twitter?: MetaDataTwitter;
-  isHome?: boolean;
 }
 
 export interface MetaDataRobots {
