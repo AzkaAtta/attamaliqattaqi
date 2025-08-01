@@ -37,90 +37,46 @@ const { language, textDirection } = I18N;
     <Analytics />
 
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://auradigital.id/#organization",
-          "name": "Aura Digital",
-          "url": "https://auradigital.id",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://auradigital.id/logo.png"
-          },
-          "sameAs": [
-            "https://www.instagram.com/auradigital.id",
-            "https://www.facebook.com/auradigital.id",
-            "https://twitter.com/auradigital_id"
-          ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+62-812-3456-7890",
-            "contactType": "Customer Support"
-          }
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Aura Digital",
+        "url": "https://auradigital.id",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://auradigital.id/logo.png"
         },
-        {
-          "@type": "WebSite",
-          "@id": "https://auradigital.id/#website",
-          "url": "https://auradigital.id",
-          "name": "Aura Digital",
-          "publisher": {
-            "@id": "https://auradigital.id/#organization"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://auradigital.id/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://auradigital.id/#webpage",
-          "url": "https://auradigital.id",
-          "name": "Aura Digital - Jasa Buzzer & Marketing Sosial Media",
-          "description": "Aura Digital adalah penyedia jasa buzzer, like, view, komentar, dan promosi sosial media terpercaya di Indonesia.",
-          "inLanguage": "id-ID",
-          "isPartOf": {
-            "@id": "https://auradigital.id/#website"
-          },
-          "breadcrumb": {
-            "@id": "https://auradigital.id/#breadcrumb"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://auradigital.id/#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Beranda",
-              "item": "https://auradigital.id/"
-            }
-          ]
-        },
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://auradigital.id/#localbusiness",
-          "name": "Aura Digital",
-          "image": "https://auradigital.id/logo.png",
-          "url": "https://auradigital.id",
-          "telephone": "+62-812-3456-7890",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Jl. Contoh No.123",
-            "addressLocality": "Bandung",
-            "addressRegion": "Jawa Barat",
-            "postalCode": "40123",
-            "addressCountry": "ID"
-          },
-          "openingHours": "Mo-Fr 09:00-17:00",
-          "priceRange": "IDR"
+        "sameAs": [
+          "https://www.instagram.com/auradigital.id",
+          "https://www.facebook.com/auradigital.id"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+62895402342693",
+          "contactType": "Customer Support"
         }
-      ]
-    }
-  </script>
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://auradigital.id",
+        "name": "Aura Digital",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://auradigital.id/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "url": "https://auradigital.id",
+        "name": "Aura Digital - Jasa Buzzer & Marketing Sosial Media",
+        "inLanguage": "id-ID"
+      }
+    ]
+  }
+</script>
 
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
