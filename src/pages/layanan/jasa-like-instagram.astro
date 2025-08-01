@@ -1,29 +1,27 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import heroImage from '~/assets/images/instagram.webp';
+
+// Import gambar dari assets
+import heroImage from '~/assets/images/jasa-like-instagram.webp';
 
 const metadata = {
-  title: 'Jasa Like Instagram Murah & Real | Tambah Like Cepat & Aman',
+  title: 'Jasa Like Instagram Murah, Real & Aman | AuraDigital',
   description:
-    'Jasa like Instagram murah, real, dan aman. Tambah like cepat untuk meningkatkan engagement dan membuat postingan Anda terlihat lebih populer di Instagram.',
-  keywords:
-    'jasa like instagram, beli like instagram, tambah like instagram, like instagram murah, jasa like real, jasa like aman, jasa sosial media, auradigital',
+    'Optimalkan akun Instagram Anda dengan jasa like real human dan server/bot yang aman dan cepat. Tingkatkan interaksi & engagement sekarang!',
+  keywords: 'jasa like instagram, like ig murah, tambah like ig, jasa like real, jasa like bot',
 };
-
-const whatsappNumber = '6281234567890';
-const whatsappReal = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Real Human.');
-const whatsappBot = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Server/Bot.');
 ---
 
 <Layout metadata={metadata}>
   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+    
     <!-- Hero Image -->
     <img 
-      src="https://raw.githubusercontent.com/AzkaAtta/attamaliqattaqi/refs/heads/main/src/assets/images/jasa-like-instagram.webp" 
+      src={heroImage.src} 
       alt="Jasa Like Instagram Murah dan Real" 
       class="w-full rounded-lg shadow mb-8"
-      width="1200" 
-      height="500" 
+      width="1200"
+      height="500"
       loading="lazy"
     />
 
