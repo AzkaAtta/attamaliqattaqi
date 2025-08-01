@@ -2,25 +2,94 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Jasa Like Instagram Murah & Real | AuraDigital',
+  title: 'Jasa Like Instagram Murah & Real | Tambah Like Cepat & Aman',
   description:
-    'Tingkatkan interaksi Instagram Anda dengan jasa like real, aman, cepat, dan murah. Cocok untuk meningkatkan engagement dan visibilitas akun Anda.',
+    'Jasa like Instagram murah, real, dan aman. Tambah like cepat untuk meningkatkan engagement dan membuat postingan Anda terlihat lebih populer di Instagram.',
   keywords:
-    'jasa like instagram, tambah like ig, like instagram murah, beli like ig, like instagram real',
-  ogImage: '/src/assets/images/instagram.webp', // optional untuk social share
-  ogType: 'website', // bisa diubah ke "article" untuk halaman artikel
+    'jasa like instagram, beli like instagram, tambah like instagram, like instagram murah, jasa like real, jasa like aman, jasa sosial media, auradigital',
 };
+
+// Ganti sesuai lokasi gambar di proyekmu
+import heroImage from '~/assets/images/instagram.webp';
+
+// Nomor WhatsApp & text pesan otomatis
+const whatsappNumber = '6281234567890';
+const whatsappText = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram.');
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
 ---
 
 <Layout metadata={metadata}>
-  <section class="py-16 text-center">
-    <h1 class="text-3xl font-bold mb-4">
-      Jasa Like Instagram Murah & Real
-    </h1>
-    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-      Dapatkan like Instagram real, cepat, dan aman untuk meningkatkan interaksi dan engagement akun Anda.
-    </p>
-  </section>
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Hero Image -->
+    <img 
+      src={heroImage.src} 
+      alt="Jasa Like Instagram Murah dan Real" 
+      class="w-full rounded-lg shadow mb-6"
+      width={1200} 
+      height={500} 
+    />
 
-  <!-- Tambahkan konten halaman jasa disini -->
+    <!-- Tombol WhatsApp -->
+    <div class="text-center mb-8">
+      <a 
+        href={whatsappLink} 
+        target="_blank" 
+        class="inline-block bg-green-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition"
+      >
+        💬 Pesan Sekarang via WhatsApp
+      </a>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">
+        Klik tombol di atas untuk langsung menghubungi kami melalui WhatsApp.
+      </p>
+    </div>
+
+    <!-- Deskripsi Panjang -->
+    <div class="prose dark:prose-invert max-w-none">
+      <h1>Jasa Like Instagram Murah, Real & Aman</h1>
+      <p>
+        Apakah Anda ingin postingan Instagram terlihat lebih populer, ramai interaksi,
+        dan berpeluang masuk ke halaman Explore? AuraDigital hadir dengan
+        <strong>jasa like Instagram murah</strong> yang aman, real, dan cepat
+        untuk meningkatkan engagement akun Anda.
+      </p>
+
+      <h2>Kenapa Perlu Tambah Like Instagram?</h2>
+      <p>
+        Like adalah salah satu metrik utama yang diperhatikan algoritma Instagram.
+        Semakin banyak like pada postingan Anda, semakin tinggi peluang postingan
+        muncul di halaman <em>Explore</em> dan mendapatkan audiens baru. 
+        Dengan bantuan layanan kami, Anda tidak perlu menunggu lama untuk 
+        mendapatkan interaksi yang nyata.
+      </p>
+
+      <h2>Kelebihan Menggunakan Jasa Like Instagram AuraDigital</h2>
+      <ul>
+        <li><strong>Like Real & Aman:</strong> Semua like berasal dari akun aktif yang aman untuk akun Anda.</li>
+        <li><strong>Proses Cepat:</strong> Like mulai masuk dalam hitungan menit setelah order diproses.</li>
+        <li><strong>Harga Terjangkau:</strong> Paket fleksibel sesuai kebutuhan.</li>
+        <li><strong>Support Semua Jenis Postingan:</strong> Termasuk foto, video feed, dan reels.</li>
+      </ul>
+
+      <h2>Cara Order</h2>
+      <ol>
+        <li>Pilih paket jasa like Instagram sesuai kebutuhan Anda.</li>
+        <li>Kirimkan link postingan Instagram yang ingin ditambahkan like.</li>
+        <li>Proses otomatis dimulai dan like akan masuk secara bertahap.</li>
+        <li>Tunggu hingga postingan terlihat lebih populer dan menarik audiens baru.</li>
+      </ol>
+
+      <h2>Tips Aman</h2>
+      <p>
+        Agar akun tetap aman, jangan posting terlalu banyak dalam sehari dan fokus pada
+        konten yang berkualitas. Kombinasikan like dengan interaksi alami agar
+        pertumbuhan terlihat natural.
+      </p>
+
+      <h2>Siap Memesan?</h2>
+      <p>
+        Klik tombol WhatsApp di atas untuk memesan sekarang dan nikmati postingan yang
+        lebih populer, engagement naik, dan peluang lebih besar untuk viral!
+      </p>
+    </div>
+  </section>
 </Layout>
