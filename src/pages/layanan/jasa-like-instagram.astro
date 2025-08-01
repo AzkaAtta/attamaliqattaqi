@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import heroImage from '~/assets/images/instagram.webp';
 
 const metadata = {
   title: 'Jasa Like Instagram Murah & Real | Tambah Like Cepat & Aman',
@@ -9,18 +10,10 @@ const metadata = {
     'jasa like instagram, beli like instagram, tambah like instagram, like instagram murah, jasa like real, jasa like aman, jasa sosial media, auradigital',
 };
 
-import heroImage from '~/assets/images/instagram.webp';
-
 // Nomor WhatsApp & text pesan otomatis
 const whatsappNumber = '6281234567890';
-
-// Untuk tombol utama
-const whatsappText = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Real Human.');
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappText}`;
-
-// Untuk tombol khusus Bot/Server
-const whatsappTextBot = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Server/Bot.');
-const whatsappLinkBot = `https://wa.me/${whatsappNumber}?text=${whatsappTextBot}`;
+const whatsappReal = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Real Human.');
+const whatsappBot = encodeURIComponent('Halo AuraDigital, saya mau pesan Jasa Like Instagram Server/Bot.');
 ---
 
 <Layout metadata={metadata}>
@@ -29,81 +22,99 @@ const whatsappLinkBot = `https://wa.me/${whatsappNumber}?text=${whatsappTextBot}
     <img 
       src={heroImage.src} 
       alt="Jasa Like Instagram Murah dan Real" 
-      class="w-full rounded-lg shadow mb-6"
+      class="w-full rounded-lg shadow mb-10"
       width={1200} 
       height={500} 
     />
 
-    <!-- Tombol WhatsApp Utama -->
-    <div class="text-center mb-8">
-      <a 
-        href={whatsappLink} 
-        target="_blank" 
-        class="inline-block bg-green-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition"
-      >
-        💬 Pesan Sekarang via WhatsApp
-      </a>
-      <p class="mt-2 text-gray-600 dark:text-gray-300">
-        Klik tombol di atas untuk langsung menghubungi kami melalui WhatsApp.
-      </p>
+    <!-- Paket Real Human -->
+    <h2 class="text-2xl font-bold mb-4">Jasa Like Instagram Real Human</h2>
+    <p class="text-gray-600 dark:text-gray-300 mb-6">
+      Paket ini menggunakan like dari pengguna sungguhan (real human) yang aman untuk akun Instagram Anda.
+    </p>
+
+    <div class="space-y-6 mb-10">
+      <!-- Paket Real 1 -->
+      <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-center">
+        <h3 class="text-lg font-semibold mb-2">1.000 Like Real Human</h3>
+        <p class="text-xl font-bold text-green-600 mb-4">Rp 50.000</p>
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappReal}`}
+          target="_blank"
+          class="inline-block bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition"
+        >
+          💬 Pesan Sekarang
+        </a>
+      </div>
+
+      <!-- Paket Real 2 -->
+      <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-center">
+        <h3 class="text-lg font-semibold mb-2">2.000 Like Real Human</h3>
+        <p class="text-xl font-bold text-green-600 mb-4">Rp 90.000</p>
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappReal}`}
+          target="_blank"
+          class="inline-block bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition"
+        >
+          💬 Pesan Sekarang
+        </a>
+      </div>
     </div>
 
-    <!-- Tabel Harga -->
-    <div class="overflow-x-auto mb-12">
-      <table class="min-w-full border border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
-        <thead class="bg-gray-100 dark:bg-gray-800">
-          <tr>
-            <th class="px-4 py-3 border-b">Paket</th>
-            <th class="px-4 py-3 border-b">Harga</th>
-            <th class="px-4 py-3 border-b">Jenis Like</th>
-            <th class="px-4 py-3 border-b">Pesan</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="px-4 py-3 border-b">1.000 Like</td>
-            <td class="px-4 py-3 border-b">Rp 50.000</td>
-            <td class="px-4 py-3 border-b">Real Human</td>
-            <td class="px-4 py-3 border-b text-center">
-              <a href={whatsappLink} target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
-                Pesan
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="px-4 py-3 border-b">1.000 Like</td>
-            <td class="px-4 py-3 border-b">Rp 20.000</td>
-            <td class="px-4 py-3 border-b">Server / Bot</td>
-            <td class="px-4 py-3 border-b text-center">
-              <a href={whatsappLinkBot} target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
-                Pesan Bot
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Pemisah untuk paket Bot -->
+    <div class="my-12 border-t border-gray-300 dark:border-gray-700 relative">
+      <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-900 px-4 text-gray-500 text-sm">
+        Atau pilih paket Like Server / Bot
+      </span>
     </div>
 
-    <!-- Deskripsi Panjang -->
-    <div class="prose dark:prose-invert max-w-none">
+    <!-- Paket Server / Bot -->
+    <h2 class="text-2xl font-bold mb-4">Jasa Like Instagram Server/Bot</h2>
+    <p class="text-gray-600 dark:text-gray-300 mb-6">
+      Paket ini menggunakan sistem server/bot untuk menambah like lebih cepat dan harga lebih murah, namun berisiko lebih tinggi dibanding like real human.
+    </p>
+
+    <div class="space-y-6">
+      <!-- Paket Bot 1 -->
+      <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-center">
+        <h3 class="text-lg font-semibold mb-2">1.000 Like Server/Bot</h3>
+        <p class="text-xl font-bold text-green-600 mb-4">Rp 20.000</p>
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappBot}`}
+          target="_blank"
+          class="inline-block bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition"
+        >
+          ⚡ Pesan Like Server/Bot
+        </a>
+      </div>
+
+      <!-- Paket Bot 2 -->
+      <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-5 text-center">
+        <h3 class="text-lg font-semibold mb-2">2.000 Like Server/Bot</h3>
+        <p class="text-xl font-bold text-green-600 mb-4">Rp 35.000</p>
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappBot}`}
+          target="_blank"
+          class="inline-block bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition"
+        >
+          ⚡ Pesan Like Server/Bot
+        </a>
+      </div>
+    </div>
+
+    <!-- Deskripsi Panjang SEO -->
+    <div class="prose dark:prose-invert max-w-none mt-12">
       <h1>Jasa Like Instagram Murah, Real & Aman</h1>
       <p>
-        Dengan layanan ini, Anda bisa memilih antara <strong>like real human</strong> 
-        yang aman untuk akun jangka panjang, atau <strong>like server/bot</strong> 
-        untuk hasil cepat dengan harga lebih murah. Kami transparan agar Anda 
-        bisa memilih sesuai kebutuhan.
+        AuraDigital menawarkan layanan jasa like Instagram yang lengkap dan transparan. 
+        Anda bisa memilih antara like <strong>real human</strong> untuk keamanan akun, 
+        atau <strong>server/bot</strong> untuk hasil cepat dan hemat biaya. 
+        Semua paket dilengkapi harga jelas dan tombol pemesanan melalui WhatsApp.
       </p>
-
-      <h2>Kenapa Memilih Layanan Kami?</h2>
-      <ul>
-        <li>Harga transparan & bisa pilih tipe layanan</li>
-        <li>Like real human untuk keamanan akun</li>
-        <li>Opsi server/bot untuk hasil cepat & hemat</li>
-        <li>Proses cepat, mulai dalam hitungan menit</li>
-      </ul>
-
       <p>
-        Klik tombol WhatsApp di atas untuk memesan paket yang Anda inginkan sekarang!
+        Dengan menambah like Instagram, postingan Anda akan terlihat lebih populer, 
+        meningkatkan peluang masuk ke <strong>Explore</strong>, 
+        dan meningkatkan <strong>engagement rate</strong> akun Anda.
       </p>
     </div>
   </section>
