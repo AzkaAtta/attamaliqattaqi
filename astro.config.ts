@@ -11,6 +11,8 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
+import yaml from '@modyfi/vite-plugin-yaml'; // <-- 1. TAMBAHKAN BARIS INI
+
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
@@ -81,6 +83,7 @@ export default defineConfig({
   },
 
   vite: {
+    plugins: [yaml()], // <-- 2. TAMBAHKAN BARIS INI
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
