@@ -11,7 +11,11 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
-import yaml from '@modyfi/vite-plugin-yaml'; // <-- 1. TAMBAHKAN BARIS INI
+// --- GANTI BARIS INI ---
+// import yaml from '@modyfi/vite-plugin-yaml'; // <--- HAPUS BARIS INI
+
+import yaml from '@rollup/plugin-yaml'; // <--- GANTI DENGAN BARIS INI
+// -----------------------
 
 import astrowind from './vendor/integration';
 
@@ -83,7 +87,7 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [yaml()], // <-- 2. TAMBAHKAN BARIS INI
+    plugins: [yaml()], // <--- BARIS INI TETAP SAMA, KARENA HANYA IMPORTNYA YANG BERUBAH
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
