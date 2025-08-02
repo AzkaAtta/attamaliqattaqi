@@ -3,7 +3,6 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import compress from 'astro-compress';
-import astrowind from './vendor/integration.js'; // sesuaikan jika kamu pakai astrowind
 
 export default defineConfig({
   output: 'static',
@@ -24,9 +23,7 @@ export default defineConfig({
       JavaScript: true,
       Logger: 1,
     }),
-    astrowind({
-      config: './src/config.yaml', // kalau pakai yaml config
-    }),
+    // HAPUS astrowind() kalau tidak ada file integration.js
   ],
 
   vite: {
