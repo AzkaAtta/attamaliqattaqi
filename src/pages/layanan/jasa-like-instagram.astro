@@ -12,85 +12,54 @@ const metadata = {
 const whatsappNumber = '62895402343693';
 const whatsappReal = encodeURIComponent('Halo, saya mau pesan Jasa Like Instagram Real Human');
 const whatsappBot = encodeURIComponent('Halo, saya mau pesan Jasa Like Instagram Server/Bot');
+
+const pageUrl = 'https://auradigital.id/layanan/jasa-like-instagram/';
 ---
 
 <Layout metadata={metadata}>
   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
 
-<!-- Schema Gabungan Product + Service + FAQPage -->
-<script type="application/ld+json">
+<!-- ✅ SCHEMA SEO PALING LENGKAP -->
+<script type="application/ld+json" is:inline>
 {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://auradigital.id" },
+        { "@type": "ListItem", "position": 2, "name": "Layanan", "item": "https://auradigital.id/layanan/" },
+        { "@type": "ListItem", "position": 3, "name": "Jasa Like Instagram", "item": "https://auradigital.id/layanan/jasa-like-instagram/" }
+      ]
+    },
+    {
       "@type": "Product",
       "name": "Paket Like Instagram (Reels & Foto)",
-      "image": "https://raw.githubusercontent.com/AzkaAtta/azkaatta.github.io/main/image/jasa-like-instagram.webp",
+      "image": "https://auradigital.id/images/jasa-like-instagram.webp",
       "description": "Beli paket like untuk postingan Instagram (Foto, Video, Reels). Dikerjakan oleh akun real dan aktif untuk meningkatkan engagement, kredibilitas, dan peluang masuk Explore Page.",
-      "brand": {
-        "@type": "Brand",
-        "name": "AuraDigital"
-      },
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "IDR",
-        "price": "20000",
-        "availability": "https://schema.org/InStock",
-        "url": "https://auradigital.id/layanan/jasa-like-instagram/"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5",
-        "reviewCount": "12"
-      }
+      "brand": { "@type": "Brand", "name": "AuraDigital" },
+      "offers": { "@type": "Offer", "priceCurrency": "IDR", "price": "20000", "availability": "https://schema.org/InStock", "url": "https://auradigital.id/layanan/jasa-like-instagram/" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "12" }
     },
     {
       "@type": "Service",
       "serviceType": "Jasa Like Instagram",
-      "provider": {
-        "@type": "Organization",
-        "name": "AuraDigital",
-        "url": "https://auradigital.id"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Indonesia"
-      },
+      "provider": { "@type": "Organization", "name": "AuraDigital", "url": "https://auradigital.id" },
+      "areaServed": { "@type": "Country", "name": "Indonesia" },
       "description": "Jasa tambah like Instagram untuk foto, video, dan reels. Tersedia opsi like real human dan server/bot dengan harga terjangkau."
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Apakah jasa like Instagram di AuraDigital aman?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ya, kami menyediakan layanan Like Real Human yang aman untuk akun Anda dan terlihat natural."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Berapa harga jasa like Instagram?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Harga mulai Rp 60.000 untuk 1.000 like menggunakan server/bot dan Rp 20.000 untuk 10 like real human."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Berapa lama proses penambahan like?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Like server/bot masuk dalam hitungan menit, sedangkan like real human bertahap untuk keamanan akun."
-          }
-        }
+        { "@type": "Question", "name": "Apakah jasa like Instagram di AuraDigital aman?", "acceptedAnswer": { "@type": "Answer", "text": "Ya, kami menyediakan layanan Like Real Human yang aman untuk akun Anda dan terlihat natural." } },
+        { "@type": "Question", "name": "Berapa harga jasa like Instagram?", "acceptedAnswer": { "@type": "Answer", "text": "Harga mulai Rp 60.000 untuk 1.000 like server/bot dan Rp 20.000 untuk 10 like real human." } },
+        { "@type": "Question", "name": "Berapa lama proses penambahan like?", "acceptedAnswer": { "@type": "Answer", "text": "Like server/bot masuk dalam hitungan menit, sedangkan like real human bertahap untuk keamanan akun." } }
       ]
     }
   ]
 }
 </script>
-    
+
     <!-- Hero Image -->
     <img 
       src={heroImage.src} 
@@ -125,7 +94,7 @@ const whatsappBot = encodeURIComponent('Halo, saya mau pesan Jasa Like Instagram
     <!-- Paket Server / Bot -->
     <h2 class="text-2xl font-bold mb-2">Jasa Like Instagram Server/Bot</h2>
     <p class="text-gray-600 dark:text-gray-300 mb-4">
-      Like dengan sistem otomatis lebih cepat dan murah, cocok untuk boost instan.
+      Like otomatis lebih cepat dan murah, cocok untuk boost instan.
     </p>
     <p class="text-xl font-bold text-green-600 mb-4">Mulai Rp 60.000 / 1.000 Like</p>
     <a
@@ -136,68 +105,38 @@ const whatsappBot = encodeURIComponent('Halo, saya mau pesan Jasa Like Instagram
       ⚡ Pesan Like Server/Bot
     </a>
 
-    <!-- Deskripsi Panjang SEO -->
+    <!-- Konten SEO Panjang -->
     <div class="prose dark:prose-invert max-w-none mt-12 text-left">
       <h1>Jasa Like Instagram Murah, Real & Aman</h1>
       <p>
         AuraDigital menyediakan <strong>jasa like Instagram</strong> yang aman dan terpercaya
-        untuk membantu meningkatkan popularitas postingan Anda. Dengan like yang banyak,
-        konten Anda akan terlihat lebih menarik, meningkatkan <strong>engagement rate</strong>,
-        dan berpeluang besar muncul di halaman <strong>Explore</strong> Instagram.
-      </p>
-      <p>
-        Kami menawarkan dua pilihan layanan: 
-        <strong>Like Real Human</strong> dan <strong>Like Server/Bot</strong>. 
-        Untuk Anda yang mengutamakan keamanan akun, layanan <strong>Real Human</strong> adalah pilihan terbaik,
-        karena interaksi datang dari akun-akun aktif yang terlihat natural. 
-        Sedangkan <strong>Server/Bot</strong> cocok untuk kebutuhan cepat dan hemat biaya,
-        sehingga hasil like bisa naik dalam hitungan menit.
+        untuk meningkatkan popularitas postingan Anda. Dengan banyak like,
+        konten Anda terlihat lebih menarik dan meningkatkan <strong>engagement rate</strong>.
       </p>
 
       <h2>Kenapa Menambah Like Instagram Itu Penting?</h2>
       <p>
-        Dalam era digital saat ini, jumlah like menjadi salah satu indikator kredibilitas akun.
-        Postingan dengan banyak like akan menarik perhatian pengguna lain untuk ikut berinteraksi.
-        Selain itu, algoritma Instagram lebih menyukai postingan dengan engagement tinggi,
-        sehingga peluang untuk muncul di <strong>Explore</strong> akan lebih besar.
-      </p>
-      <p>
+        Jumlah like adalah indikator kredibilitas akun. Postingan dengan banyak like lebih menarik perhatian
+        dan berpeluang muncul di <strong>Explore</strong>. 
         Dengan jasa like Instagram dari AuraDigital, Anda bisa:
       </p>
       <ul>
         <li>Meningkatkan <strong>trust</strong> dan kredibilitas akun.</li>
         <li>Memperbesar peluang <strong>viral</strong> dan masuk halaman Explore.</li>
-        <li>Meningkatkan <strong>engagement rate</strong> untuk kebutuhan bisnis.</li>
-        <li>Mendukung strategi promosi produk atau jasa di Instagram.</li>
+        <li>Meningkatkan <strong>engagement rate</strong> untuk bisnis.</li>
+        <li>Mendukung promosi produk/jasa di Instagram.</li>
       </ul>
 
       <h2>Perbedaan Like Real Human vs Server/Bot</h2>
-      <p>
-        Banyak orang bertanya, mana yang lebih baik antara like real human dan server/bot? 
-        Berikut perbedaannya:
-      </p>
       <ul>
-        <li>
-          <strong>Like Real Human:</strong> Interaksi berasal dari akun aktif, 
-          terlihat alami, aman untuk jangka panjang.
-        </li>
-        <li>
-          <strong>Like Server/Bot:</strong> Proses cepat dan harga murah, 
-          cocok untuk meningkatkan like secara instan, tetapi lebih cocok untuk kebutuhan jangka pendek.
-        </li>
+        <li><strong>Real Human:</strong> Interaksi akun aktif, alami, aman jangka panjang.</li>
+        <li><strong>Server/Bot:</strong> Proses cepat & murah, cocok untuk boost instan.</li>
       </ul>
 
-      <h2>Layanan Jasa Like Instagram dari AuraDigital</h2>
       <p>
-        Kami menyediakan paket jasa like Instagram yang fleksibel, 
-        mulai dari ratusan hingga ribuan like sesuai kebutuhan Anda. 
-        Setiap pemesanan bisa dilakukan dengan mudah melalui WhatsApp,
-        dan Anda bisa memilih apakah ingin menggunakan layanan real human atau server/bot.
-      </p>
-
-      <p>
-        Jangan ragu untuk mencoba, karena layanan kami <strong>aman, cepat, dan transparan</strong>.
-        Klik tombol WhatsApp di bawah untuk langsung berkonsultasi atau melakukan pemesanan.
+        Tersedia juga <a href="/layanan/jasa-komentar-instagram/">jasa komentar Instagram</a> 
+        dan <a href="/layanan/jasa-followers-instagram/">jasa followers Instagram</a> 
+        untuk melengkapi strategi social media Anda.
       </p>
     </div>
   </section>
