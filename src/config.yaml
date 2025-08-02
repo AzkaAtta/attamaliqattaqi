@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: auradigital
+  site: 'https://auradigital.id'
   base: '/'
   trailingSlash: false
 
@@ -9,26 +9,26 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: AuraDigital
+    template: '%s — AuraDigital'
+  description: "✨ Jasa Buzzer, Like, View, Komentar Instagram, TikTok & Sosial Media Termurah, Real & Aman. Tingkatkan Engagement & Popularitas Bisnis Anda!"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: auradigital
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@auradigital'
+    site: '@auradigital'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: id
   textDirection: ltr
 
 apps:
