@@ -1,22 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 /// <reference types="vite/client" />
-/// <reference types="../vendor/integration/types" />
-
-declare module '*.yaml' {
-  interface MyYamlData {
-    SITE: {
-      name: string;
-      website: string;
-      trailingSlash: boolean;
-    };
-    METADATA: {
-      description: string;
-    };
-    APP_BLOG: {
-      isEnabled: boolean;
-    };
-  }
-
-  const data: MyYamlData;
-  export default data;
-}
+/// <reference types="../vendor/integration/types.d.ts" />
