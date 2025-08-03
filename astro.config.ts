@@ -91,11 +91,12 @@ export default defineConfig({
   },
 
   vite: {
-    // ❌ HAPUS plugin yaml karena tidak dipakai lagi
-    resolve: {
-      alias: {
-        '~': path.resolve(__dirname, './src'),
-      },
+  plugins: [yaml()],
+  assetsInclude: ['**/*.yaml'], // <--- Tambahan penting
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src'),
     },
   },
+},
 });
