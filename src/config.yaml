@@ -1,34 +1,34 @@
 site:
-  name: "auradigital"
-  site: "https://auradigital.id"
-  base: "/"
+  name: 'auradigital'
+  site: 'https://auradigital.id'
+  base: '/'
   trailingSlash: false
-  googleSiteVerificationId: "orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"
+  googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M'
 
 # Default SEO metadata
 metadata:
   title:
-    default: "AuraDigital"
-    template: "%s — AuraDigital"
-  description: "✨ Jasa Buzzer, Like, View, Komentar Instagram, TikTok & Sosial Media Termurah, Real & Aman. Tingkatkan Engagement & Popularitas Bisnis Anda!"
+    default: 'AuraDigital'
+    template: '%s — AuraDigital'
+  description: '✨ Jasa Buzzer, Like, View, Komentar Instagram, TikTok & Sosial Media Termurah, Real & Aman. Tingkatkan Engagement & Popularitas Bisnis Anda!'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: "auradigital"
+    site_name: 'auradigital'
     images:
-      - url: "~/assets/images/default.png"
+      - url: '~/assets/images/default.png'
         width: 1200
         height: 628
-    type: "website"
+    type: 'website'
   twitter:
-    handle: "@auradigital"
-    site: "@auradigital"
-    cardType: "summary_large_image"
+    handle: '@auradigital'
+    site: '@auradigital'
+    cardType: 'summary_large_image'
 
 i18n:
-  language: "id"
-  textDirection: "ltr"
+  language: 'id'
+  textDirection: 'ltr'
 
 apps:
   blog:
@@ -36,22 +36,22 @@ apps:
     postsPerPage: 6
     post:
       isEnabled: true
-      permalink: "/%slug%" # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
     list:
       isEnabled: true
-      pathname: "blog" # Blog main path, you can change this to "articles" (/articles)
+      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
       robots:
         index: true
     category:
       isEnabled: true
-      pathname: "category" # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
       robots:
         index: true
     tag:
       isEnabled: true
-      pathname: "tag" # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
       robots:
         index: false
     isRelatedPostsEnabled: true
@@ -63,4 +63,4 @@ analytics:
       id: null # or "G-XXXXXXXXXX"
 
 ui:
-  theme: "system" # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
