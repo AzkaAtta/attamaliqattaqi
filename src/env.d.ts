@@ -9,6 +9,12 @@ declare module '*.yaml' {
       website: string;
       trailingSlash: boolean;
     };
+    METADATA: {
+      description: string;
+    };
+    APP_BLOG: {
+      isEnabled: boolean;
+    };
   }
 
   const data: MyYamlData;
