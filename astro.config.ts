@@ -11,21 +11,25 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
-// --- GANTI BARIS INI ---
-// import yaml from '@modyfi/vite-plugin-yaml'; // <--- HAPUS BARIS INI
-
-import yaml from '@rollup/plugin-yaml'; // <--- GANTI DENGAN BARIS INI
-// -----------------------
-
 import astrowind from './vendor/integration';
 
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
+import {
+  readingTimeRemarkPlugin,
+  responsiveTablesRehypePlugin,
+  lazyImagesRehypePlugin
+} from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
-const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
-  hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+const whenExternalScripts = (
+  items: (() => AstroIntegration) | (() => AstroIntegration)[]
+ = []) =>
+  hasExternalScripts
+    ? Array.isArray(items)
+      ? items.map((item) => item())
+      : [items()]
+    : [];
 
 export default defineConfig({
   output: 'static',
@@ -87,7 +91,7 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [yaml()], // <--- BARIS INI TETAP SAMA, KARENA HANYA IMPORTNYA YANG BERUBAH
+    // ❌ HAPUS plugin yaml karena tidak dipakai lagi
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
