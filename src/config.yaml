@@ -1,5 +1,5 @@
 site:
-  name: auradigital
+  name: "auradigital"
   site: "https://auradigital.id"
   base: "/"
   trailingSlash: false
@@ -8,27 +8,27 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AuraDigital
+    default: "AuraDigital"
     template: "%s — AuraDigital"
   description: "✨ Jasa Buzzer, Like, View, Komentar Instagram, TikTok & Sosial Media Termurah, Real & Aman. Tingkatkan Engagement & Popularitas Bisnis Anda!"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: auradigital
+    site_name: "auradigital"
     images:
       - url: "~/assets/images/default.png"
         width: 1200
         height: 628
-    type: website
+    type: "website"
   twitter:
     handle: "@auradigital"
     site: "@auradigital"
-    cardType: summary_large_image
+    cardType: "summary_large_image"
 
 i18n:
-  language: id
-  textDirection: ltr
+  language: "id"
+  textDirection: "ltr"
 
 apps:
   blog:
