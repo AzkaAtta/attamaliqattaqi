@@ -298,4 +298,15 @@ const whatsappBot = encodeURIComponent('Halo, saya mau pesan Jasa Komentar Insta
               </p>
 
               <p>
+
+               <script is:inline>
+  document.getElementById('readMoreBtn')?.addEventListener('click', () => {
+    const content = document.getElementById('hiddenContent');
+    if (content) {
+      content.classList.remove('hidden');
+      content.scrollIntoView({ behavior: 'smooth' });
+    }
+    document.getElementById('readMoreBtn').style.display = 'none';
+  });
+</script>
        
