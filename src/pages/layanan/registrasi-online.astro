@@ -4,9 +4,9 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
-  title: 'Jasa Registrasi Online Cepat, Aman & Terpercaya | AuraDigital',
+  title: 'Jasa Registrasi Online Cepat & Aman | AuraDigital',
   description:
-    'Butuh banyak akun untuk keperluan bisnis, pemasaran, atau aplikasi tertentu? Gunakan jasa registrasi online dari AuraDigital yang cepat, real, dan aman.',
+    'Butuh bantuan pendaftaran akun secara massal maupun individual? Gunakan jasa registrasi online dari AuraDigital. Aman, real human, dan terpercaya.',
 };
 ---
 
@@ -14,9 +14,30 @@ const metadata = {
   <Hero
     tagline="Layanan Registrasi Otomatis & Manual"
     title="Jasa Registrasi Online Cepat & Aman"
-    subtitle="Kami bantu pendaftaran akun massal maupun individual untuk berbagai platform. Real human, data valid, dan proses cepat."
+    subtitle="Kami bantu proses registrasi akun untuk berbagai platform web maupun aplikasi. Layanan profesional, cepat, dan terpercaya."
     image={{
       src: 'https://raw.githubusercontent.com/AzkaAtta/attamaliqattaqi/refs/heads/main/src/assets/images/jasa-registrasi-online.webp',
-      alt: 'Jasa Registrasi Akun Online oleh AuraDigital',
+      alt: 'Jasa Registrasi Online oleh AuraDigital',
     }}
   />
+
+  <Features2
+    title="Jenis Layanan Registrasi"
+    subtitle="Pilih layanan registrasi yang sesuai kebutuhan Anda"
+    columns={3}
+    items={[
+      {
+        title: 'Registrasi Web',
+        description:
+          '<a href="/layanan/registrasi-web/" class="text-blue-600 hover:underline">Kami bantu proses pendaftaran akun di berbagai situs web, cocok untuk keperluan bisnis atau personal.</a>',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Registrasi Aplikasi',
+        description:
+          '<a href="/layanan/registrasi-aplikasi/" class="text-blue-600 hover:underline">Pendaftaran akun secara manual atau otomatis di berbagai aplikasi populer. Cepat, aman, dan fleksibel.</a>',
+        icon: 'tabler:device-mobile',
+      },
+    ]}
+  />
+</Layout>
