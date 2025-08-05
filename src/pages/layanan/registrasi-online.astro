@@ -1,0 +1,22 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Jasa Registrasi Online Cepat, Aman & Terpercaya | AuraDigital',
+  description:
+    'Butuh banyak akun untuk keperluan bisnis, pemasaran, atau aplikasi tertentu? Gunakan jasa registrasi online dari AuraDigital yang cepat, real, dan aman.',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Layanan Registrasi Otomatis & Manual"
+    title="Jasa Registrasi Online Cepat & Aman"
+    subtitle="Kami bantu pendaftaran akun massal maupun individual untuk berbagai platform. Real human, data valid, dan proses cepat."
+    image={{
+      src: 'https://raw.githubusercontent.com/AzkaAtta/attamaliqattaqi/refs/heads/main/src/assets/images/jasa-registrasi-online.webp',
+      alt: 'Jasa Registrasi Akun Online oleh AuraDigital',
+    }}
+  />
