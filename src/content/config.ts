@@ -1,3 +1,12 @@
+// --- Tambahan untuk RSS / Sitemap / Meta ---
+export const SITE = {
+  name: "Aura Digital",
+  title: "Aura Digital - Jasa Sosial Media",
+  description: "Layanan profesional untuk menambah komentar, like, dan interaksi di Instagram.",
+  url: "https://auradigital.id",
+};
+
+// --- Content Collections ---
 import { z, defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 
@@ -6,18 +15,14 @@ const metadataDefinition = () =>
     .object({
       title: z.string().optional(),
       ignoreTitleTemplate: z.boolean().optional(),
-
       canonical: z.string().url().optional(),
-
       robots: z
         .object({
           index: z.boolean().optional(),
           follow: z.boolean().optional(),
         })
         .optional(),
-
       description: z.string().optional(),
-
       openGraph: z
         .object({
           url: z.string().optional(),
@@ -35,7 +40,6 @@ const metadataDefinition = () =>
           type: z.string().optional(),
         })
         .optional(),
-
       twitter: z
         .object({
           handle: z.string().optional(),
