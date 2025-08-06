@@ -1,13 +1,10 @@
----
 import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
 
 import type { Props as AstroSeoProps } from '@astrolib/seo';
-
 import { SITE, METADATA, I18N } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
-
 import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
@@ -66,4 +63,8 @@ const seoProps: AstroSeoProps = merge(
 );
 ---
 
+<!-- Render SEO meta tags -->
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+
+<!-- ✅ Tambahan meta keywords manual -->
+{keywords && <meta name="keywords" content={keywords} />}
