@@ -1,7 +1,12 @@
 ---
-import PageLayout from '~/layouts/PageLayout.astro'; // Optional, kalau ada nested layout
+import BaseLayout from '~/layouts/Layout.astro'; // sebelumnya import PageLayout
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Announcement from '~/components/widgets/Announcement.astro';
+
+import { headerData, footerData } from '~/navigation';
+
 import type { MetaData } from '~/types';
-import { titleCase } from '~/utils/format'; // optional, kalau kamu pakai helper format
 
 export interface Props {
   metadata?: MetaData;
@@ -10,21 +15,17 @@ export interface Props {
 const { metadata } = Astro.props;
 ---
 
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {metadata?.title && <title>{metadata.title}</title>}
-    {metadata?.description && <meta name="description" content={metadata.description} />}
-    {metadata?.keywords && <meta name="keywords" content={metadata.keywords} />}
-  </head>
-
-  <body>
-    <slot name="announcement" />
-    <slot name="header" />
-    <main>
-      <slot />
-    </main>
-    <slot name="footer" />
-  </body>
-</html>
+<BaseLayout metadata={metadata}>
+  <slot name="announcement">
+    <Announcement />
+  </slot>
+  <slot name="header">
+    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+  </slot>
+  <main>
+    <slot />
+  </main>
+  <slot name="footer">
+    <Footer {...footerData} />
+  </slot>
+</BaseLayout>
