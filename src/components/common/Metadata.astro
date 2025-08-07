@@ -106,14 +106,13 @@ const jsonLd = {
   }}
 />
 
-<!-- Meta tambahan manual -->
 <meta name="keywords" content={allKeywords} />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8" />
 <meta name="author" content={SITE?.name} />
 <meta name="theme-color" content="#ffffff" />
 
-<!-- ✅ Gunakan jsonLd di sini -->
+<!-- ✅ Ini penting untuk menghindari error -->
 <script type="application/ld+json" is:inline>
   {JSON.stringify(jsonLd)}
 </script>
