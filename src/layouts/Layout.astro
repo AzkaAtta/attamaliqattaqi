@@ -21,13 +21,13 @@ export interface Props {
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
 
-// ✅ Variabel sekarang dipakai di JSON-LD
 const _pageUrl = `https://auradigital.id${Astro.url.pathname}`;
 const _pageName = metadata?.title || "Aura Digital - Jasa Buzzer & Marketing Sosial Media";
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={language} dir={const _pageUrl = `https://auradigital.id${Astro.url.pathname}`;
+const _pageName = metadata?.title || "Aura Digital - Jasa Buzzer & Marketing Sosial Media";textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
     <Favicons />
@@ -37,48 +37,42 @@ const _pageName = metadata?.title || "Aura Digital - Jasa Buzzer & Marketing Sos
     <SiteVerification />
     <Analytics />
 
-    <!-- Schema JSON-LD -->
     <script type="application/ld+json" is:inline>
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "name": "Aura Digital",
-            "url": "https://auradigital.id",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://auradigital.id/logo.png"
-            },
-            "sameAs": [
-              "https://www.instagram.com/auradigital.id",
-              "https://www.facebook.com/auradigital.id"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+62895402342693",
-              "contactType": "Customer Support"
-            }
-          },
-          {
-            "@type": "WebSite",
-            "url": "https://auradigital.id",
-            "name": "Aura Digital",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://auradigital.id/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          },
-          {
-            "@type": "WebPage",
-            "url": _pageUrl,
-            "name": _pageName,
-            "inLanguage": "id-ID"
-          }
-        ]
-      })}
-    </script>
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Aura Digital",
+        "url": "https://auradigital.id",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://auradigital.id/logo.png"
+        },
+        "sameAs": [
+          "https://www.instagram.com/auradigital.id",
+          "https://www.facebook.com/auradigital.id"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+62895402342693",
+          "contactType": "Customer Support"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://auradigital.id",
+        "name": "Aura Digital"
+      },
+      {
+        "@type": "WebPage",
+        "url": _pageUrl,
+        "name": _pageName,
+        "inLanguage": "id-ID"
+      }
+    ]
+  })}
+</script>
 
     <!-- View Transitions -->
     <ClientRouter fallback="swap" />
