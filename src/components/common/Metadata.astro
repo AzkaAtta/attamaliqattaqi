@@ -4,6 +4,7 @@ export interface Props {
   description?: string;
   image?: string;
   canonical?: string;
+  keywords?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   description = "Jasa komentar Instagram murah, cepat, dan aman. Tambah komentar real Indonesia untuk akun bisnismu agar makin viral.",
   image = "https://auradigital.id/social-preview.jpg",
   canonical = "https://auradigital.id",
+  keywords = "jasa komentar Instagram, beli komentar real, komentar aman, jasa viral, jasa buzzer Indonesia"
 } = Astro.props;
 
 const siteName = "AuraDigital";
@@ -25,8 +27,8 @@ const siteName = "AuraDigital";
 <!-- Canonical URL -->
 <link rel="canonical" href={canonical} />
 
-<!-- Meta Keywords -->
-<meta name="keywords" content="jasa komentar Instagram, beli komentar real, komentar aman, jasa viral, jasa buzzer Indonesia" />
+<!-- Meta Keywords (sekarang dinamis) -->
+<meta name="keywords" content={keywords} />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
