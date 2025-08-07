@@ -23,6 +23,10 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
+
+// Dynamic canonical & page name
+const pageUrl = `https://auradigital.id${Astro.url.pathname}`;
+const pageName = metadata?.title || "Aura Digital - Jasa Buzzer & Marketing Sosial Media";
 ---
 
 <!doctype html>
@@ -36,9 +40,9 @@ const { language, textDirection } = I18N;
     <SiteVerification />
     <Analytics />
 
-    <!-- Schema JSON-LD -->
+    <!-- ✅ Dynamic Schema JSON-LD -->
     <script type="application/ld+json" is:inline>
-      {
+      {JSON.stringify({
         "@context": "https://schema.org",
         "@graph": [
           {
@@ -49,7 +53,10 @@ const { language, textDirection } = I18N;
               "@type": "ImageObject",
               "url": "https://auradigital.id/logo.png"
             },
-            "sameAs": ["https://www.instagram.com/auradigital.id", "https://www.facebook.com/auradigital.id"],
+            "sameAs": [
+              "https://www.instagram.com/auradigital.id",
+              "https://www.facebook.com/auradigital.id"
+            ],
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "+62895402342693",
@@ -68,12 +75,12 @@ const { language, textDirection } = I18N;
           },
           {
             "@type": "WebPage",
-            "url": "https://auradigital.id",
-            "name": "Aura Digital - Jasa Buzzer & Marketing Sosial Media",
+            "url": pageUrl,
+            "name": pageName,
             "inLanguage": "id-ID"
           }
         ]
-      }
+      })}
     </script>
 
     <!-- View Transitions -->
