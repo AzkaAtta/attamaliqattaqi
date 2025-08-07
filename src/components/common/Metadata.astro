@@ -1,16 +1,17 @@
 ---
 import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
+
 import type { Props as AstroSeoProps } from '@astrolib/seo';
 
 import { SITE, METADATA, I18N } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
+
 import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
-  keywords?: string[]; // ✅ di sini aja
 }
 
 const {
@@ -21,14 +22,13 @@ const {
   description,
   openGraph = {},
   twitter = {},
-  keywords = [], // ✅ default array kosong
 } = Astro.props;
 
 const seoProps: AstroSeoProps = merge(
   {
     title: '',
     titleTemplate: '%s',
-    canonical,
+    canonical: canonical,
     noindex: true,
     nofollow: true,
     description: undefined,
@@ -36,7 +36,7 @@ const seoProps: AstroSeoProps = merge(
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: I18N?.language || 'id',
+      locale: I18N?.language || 'en',
       type: 'website',
     },
     twitter: {
@@ -53,21 +53,16 @@ const seoProps: AstroSeoProps = merge(
     twitter: METADATA?.twitter,
   },
   {
-    title,
+    title: title,
     titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
-    canonical,
+    canonical: canonical,
     noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
     nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
-    description,
+    description: description,
     openGraph: { url: canonical, ...openGraph },
-    twitter,
+    twitter: twitter,
   }
 );
 ---
 
-<AstroSeo {...{ 
-  ...seoProps, 
-  openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) 
-}} />
-
-{keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
