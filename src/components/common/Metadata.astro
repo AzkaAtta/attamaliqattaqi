@@ -1,13 +1,11 @@
 ---
 import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
-
 import type { Props as AstroSeoProps } from '@astrolib/seo';
 
 import { SITE, METADATA, I18N } from 'astrowind:config';
 import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
-
 import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
@@ -36,7 +34,7 @@ const seoProps: AstroSeoProps = merge(
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: I18N?.language || 'en',
+      locale: I18N?.language || 'id',
       type: 'website',
     },
     twitter: {
@@ -63,6 +61,28 @@ const seoProps: AstroSeoProps = merge(
     twitter: twitter,
   }
 );
+
+// JSON-LD mirip RankMath
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": title || SITE?.name,
+  "url": canonical,
+  "description": description || METADATA?.description,
+  "publisher": {
+    "@type": "Organization",
+    "name": SITE?.name,
+    "logo": {
+      "@type": "ImageObject",
+      "url": SITE?.logo || "https://auradigital.id/logo.png"
+    }
+  }
+};
 ---
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+
+<!-- JSON-LD mirip RankMath -->
+<script type="application/ld+json" is:inline>
+  {JSON.stringify(jsonLd)}
+</script>
