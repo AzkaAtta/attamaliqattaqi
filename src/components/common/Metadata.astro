@@ -1,119 +1,45 @@
 ---
-import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
-import type { Props as AstroSeoProps } from '@astrolib/seo';
-
-import { SITE, METADATA, I18N } from 'astrowind:config';
-import type { MetaData } from '~/types';
-import { getCanonical } from '~/utils/permalinks';
-import { adaptOpenGraphImages } from '~/utils/images';
-
-export interface Props extends MetaData {
-  dontUseTitleTemplate?: boolean;
-  keywords?: string[];
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
 }
 
 const {
-  title,
-  ignoreTitleTemplate = false,
-  canonical = String(getCanonical(String(Astro.url.pathname))),
-  robots = {},
-  description,
-  openGraph = {},
-  twitter = {},
-  keywords = [],
+  title = "Jasa Buzzer dan Komentar Instagram — AuraDigital",
+  description = "Jasa komentar Instagram murah, cepat, dan aman. Tambah komentar real Indonesia untuk akun bisnismu agar makin viral.",
+  image = "https://auradigital.id/social-preview.jpg",
+  canonical = "https://auradigital.id",
+  noindex = false,
 } = Astro.props;
 
-const seoProps: AstroSeoProps = merge(
-  {
-    title: '',
-    titleTemplate: '%s',
-    canonical: canonical,
-    noindex: true,
-    nofollow: true,
-    description: undefined,
-    openGraph: {
-      url: canonical,
-      site_name: SITE?.name,
-      images: [],
-      locale: I18N?.language || 'id',
-      type: 'website',
-    },
-    twitter: {
-      cardType: openGraph?.images?.length ? 'summary_large_image' : 'summary',
-    },
-  },
-  {
-    title: METADATA?.title?.default,
-    titleTemplate: METADATA?.title?.template,
-    noindex: typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : undefined,
-    nofollow: typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : undefined,
-    description: METADATA?.description,
-    openGraph: METADATA?.openGraph,
-    twitter: METADATA?.twitter,
-  },
-  {
-    title: title,
-    titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
-    canonical: canonical,
-    noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
-    nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
-    description: description,
-    openGraph: { url: canonical, ...openGraph },
-    twitter: twitter,
-  }
-);
-
-// Default keywords jika tidak diisi
-const defaultKeywords = [
-  "jasa komentar instagram",
-  "beli komentar instagram",
-  "tambah komentar ig",
-  "komentar ig murah",
-  "jasa buzzer instagram",
-  "jasa like instagram",
-  "jasa view instagram",
-  "auradigital"
-];
-
-const allKeywords = [...new Set([...keywords, ...defaultKeywords])].join(", ");
-
-// Adapt open graph images
-seoProps.openGraph = await adaptOpenGraphImages(seoProps?.openGraph, Astro.site);
-
-// JSON-LD Schema
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": title || SITE?.name,
-  "url": canonical,
-  "description": description || METADATA?.description,
-  "publisher": {
-    "@type": "Organization",
-    "name": SITE?.name,
-    "logo": {
-      "@type": "ImageObject",
-      "url": SITE?.logo || "https://auradigital.id/logo.png"
-    }
-  }
-};
+const siteName = "AuraDigital";
 ---
 
-<AstroSeo
-  {...{
-    ...seoProps,
-    openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site),
-  }}
-/>
-
-<!-- Meta tambahan -->
-<meta name="keywords" content={allKeywords} />
+<!-- Metadata utama -->
+<title>{title}</title>
+<meta name="description" content={description} />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta charset="UTF-8" />
-<meta name="author" content={SITE?.name} />
-<meta name="theme-color" content="#ffffff" />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
 
-<!-- ✅ Tambahkan bagian ini -->
-<script type="application/ld+json" is:inline>
-  {JSON.stringify(jsonLd)}
-</script>
+<!-- Canonical URL -->
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" />
