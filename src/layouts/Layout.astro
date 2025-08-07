@@ -40,48 +40,47 @@ const pageName = metadata?.title || "Aura Digital - Jasa Buzzer & Marketing Sosi
     <SiteVerification />
     <Analytics />
 
-    <!-- ✅ Dynamic Schema JSON-LD -->
     <script type="application/ld+json" is:inline>
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "name": "Aura Digital",
-            "url": "https://auradigital.id",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://auradigital.id/logo.png"
-            },
-            "sameAs": [
-              "https://www.instagram.com/auradigital.id",
-              "https://www.facebook.com/auradigital.id"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+62895402342693",
-              "contactType": "Customer Support"
-            }
-          },
-          {
-            "@type": "WebSite",
-            "url": "https://auradigital.id",
-            "name": "Aura Digital",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://auradigital.id/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          },
-          {
-            "@type": "WebPage",
-            "url": pageUrl,
-            "name": pageName,
-            "inLanguage": "id-ID"
-          }
-        ]
-      })}
-    </script>
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Aura Digital",
+        "url": "https://auradigital.id",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://auradigital.id/logo.png"
+        },
+        "sameAs": [
+          "https://www.instagram.com/auradigital.id",
+          "https://www.facebook.com/auradigital.id"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+62895402342693",
+          "contactType": "Customer Support"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://auradigital.id",
+        "name": "Aura Digital",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://auradigital.id/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "url": `https://auradigital.id${Astro.url.pathname}`,
+        "name": metadata?.title || "Aura Digital - Jasa Buzzer & Marketing Sosial Media",
+        "inLanguage": "id-ID"
+      }
+    ]
+  })}
+</script>
 
     <!-- View Transitions -->
     <ClientRouter fallback="swap" />
