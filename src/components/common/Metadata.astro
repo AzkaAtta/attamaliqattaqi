@@ -78,6 +78,9 @@ const defaultKeywords = [
 
 const allKeywords = [...new Set([...keywords, ...defaultKeywords])].join(", ");
 
+// Adapt open graph images here (FIX)
+seoProps.openGraph = await adaptOpenGraphImages(seoProps?.openGraph, Astro.site);
+
 // JSON-LD Schema
 const jsonLd = {
   "@context": "https://schema.org",
@@ -95,21 +98,3 @@ const jsonLd = {
   }
 };
 ---
-
-<AstroSeo
-  {...{
-    ...seoProps,
-    openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site),
-  }}
-/>
-
-<!-- Meta tambahan manual -->
-<meta name="keywords" content={allKeywords} />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta charset="UTF-8" />
-<meta name="author" content={SITE?.name} />
-<meta name="theme-color" content="#ffffff" />
-
-<script type="application/ld+json" is:inline>
-  {JSON.stringify(jsonLd)}
-</script>
