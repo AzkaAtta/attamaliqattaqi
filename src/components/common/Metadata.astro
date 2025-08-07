@@ -10,6 +10,7 @@ import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
+  keywords?: string[];
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   description,
   openGraph = {},
   twitter = {},
+  keywords = [],
 } = Astro.props;
 
 const seoProps: AstroSeoProps = merge(
@@ -62,8 +64,21 @@ const seoProps: AstroSeoProps = merge(
   }
 );
 
-// JSON-LD mirip RankMath
+// Tambahkan meta keywords otomatis
+const defaultKeywords = [
+  "jasa komentar instagram",
+  "beli komentar instagram",
+  "tambah komentar ig",
+  "komentar ig murah",
+  "jasa buzzer instagram",
+  "jasa like instagram",
+  "jasa view instagram",
+  "auradigital"
+];
 
+const allKeywords = [...new Set([...keywords, ...defaultKeywords])].join(", ");
+
+// JSON-LD mirip RankMath
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const jsonLd = {
   "@context": "https://schema.org",
@@ -89,6 +104,8 @@ const jsonLd = {
     openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site),
   }}
 />
+
+<meta name="keywords" content={allKeywords} />
 
 <script type="application/ld+json" is:inline>
   {JSON.stringify(jsonLd)}
