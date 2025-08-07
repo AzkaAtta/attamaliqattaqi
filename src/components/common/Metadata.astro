@@ -80,7 +80,12 @@ const jsonLd = {
 };
 ---
 
-<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+<AstroSeo
+  {...{
+    ...seoProps,
+    openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site),
+  }}
+/>
 
 <!-- JSON-LD mirip RankMath -->
 <script type="application/ld+json" is:inline>
