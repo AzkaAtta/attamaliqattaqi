@@ -63,6 +63,8 @@ const seoProps: AstroSeoProps = merge(
 );
 
 // JSON-LD mirip RankMath
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -78,6 +80,7 @@ const jsonLd = {
     }
   }
 };
+/* eslint-enable @typescript-eslint/no-unused-vars */
 ---
 
 <AstroSeo
@@ -87,7 +90,6 @@ const jsonLd = {
   }}
 />
 
-<!-- Tambahkan JSON-LD di sini agar jsonLd dianggap terpakai -->
 <script type="application/ld+json" is:inline>
   {JSON.stringify(jsonLd)}
 </script>
