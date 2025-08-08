@@ -29,14 +29,14 @@ const seoProps: AstroSeoProps = merge(
     title: '',
     titleTemplate: '%s',
     canonical: canonical,
-    noindex: true,
-    nofollow: true,
+    noindex: false,
+    nofollow: false,
     description: undefined,
     openGraph: {
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: I18N?.language || 'en',
+      locale: I18N?.language || 'id',
       type: 'website',
     },
     twitter: {
