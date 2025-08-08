@@ -23,10 +23,6 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { language, textDirection } = I18N;
-
-// Variabel untuk JSON-LD
-const pageUrl = `https://auradigital.site${Astro.url.pathname}`;
-const pageName = metadata?.title || 'Aura Digital - Jasa Buzzer & Marketing Sosial Media';
 ---
 
 <!doctype html>
@@ -40,48 +36,13 @@ const pageName = metadata?.title || 'Aura Digital - Jasa Buzzer & Marketing Sosi
     <SiteVerification />
     <Analytics />
 
-    <script type="application/ld+json" is:inline>
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "name": "Aura Digital",
-            "url": "https://auradigital.site",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://auradigital.site/logo.png"
-            },
-            "sameAs": [
-              "https://www.instagram.com/auradigital.id",
-              "https://www.facebook.com/auradigital.id"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+62895402342693",
-              "contactType": "Customer Support"
-            }
-          },
-          {
-            "@type": "WebSite",
-            "url": "https://auradigital.site",
-            "name": "Aura Digital"
-          },
-          {
-            "@type": "WebPage",
-            "url": pageUrl,
-            "name": pageName,
-            "inLanguage": "id-ID"
-          }
-        ]
-      })}
-    </script>
-
+    <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
     <slot />
+
     <BasicScripts />
   </body>
 </html>
