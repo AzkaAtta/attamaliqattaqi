@@ -330,3 +330,44 @@ const whatsappReal = encodeURIComponent(
     </section>
   </section>
 </Layout>
+
+        <!-- Hidden Konten SEO -->
+<section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+  <button
+    id="readMoreBtn"
+    type="button"
+    aria-expanded="false"
+    aria-controls="hiddenContent"
+    class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+  >
+    📖 Baca Selengkapnya
+  </button>
+
+  <div id="hiddenContent" class="hidden mt-6 text-left text-gray-700 dark:text-gray-300 space-y-4">
+    <p><strong>Definisi:</strong> Registrasi online adalah proses pendaftaran atau pencatatan yang dilakukan sepenuhnya melalui internet.</p>
+    <p><strong>Aplikasi berbasis web:</strong> Sistem registrasi online mengelola alur pendaftaran di web dan dapat mengurangi ketergantungan pada dokumen fisik.</p>
+    <p><strong>Kesehatan:</strong> Dalam layanan kesehatan, registrasi online membantu penjadwalan kunjungan pasien dan pengaturan slot pelayanan agar antrean lebih tertib.</p>
+    <p><strong>Efisiensi waktu:</strong> Registrasi online mempercepat proses pendaftaran dan memangkas waktu tunggu dibandingkan metode manual.</p>
+    <p><strong>Kenyamanan pengguna:</strong> Pengguna bisa mendaftar dari ponsel/komputer kapan saja, memantau status atau antrean dari mana pun.</p>
+    <p><strong>Dukungan operasional:</strong> Penerapan registrasi online terbukti membantu mengurangi kepadatan loket dan meningkatkan efisiensi alur kerja.</p>
+    <p><strong>Kualitas layanan:</strong> Sistem pendaftaran daring yang rapi biasanya berdampak pada pengalaman yang lebih baik dan kepuasan pengguna yang lebih tinggi.</p>
+    <p><strong>Alur umum:</strong> Contoh alur: isi data → pilih layanan/jadwal → unggah berkas → verifikasi → konfirmasi berhasil.</p>
+    <p><strong>Event & kegiatan:</strong> Registrasi online memudahkan pendataan peserta, mulai dari pra-acara, hari-H, hingga distribusi tiket/sertifikat.</p>
+    <p><strong>Integrasi sistem:</strong> Fitur registrasi sering terhubung dengan sistem internal (mis. SIM, CRM, SIMRS) dan bisa diakses melalui web tanpa instal aplikasi khusus.</p>
+    <p><strong>Pendidikan tinggi:</strong> Kampus menggunakan portal/SIA untuk registrasi mahasiswa (krs, her-registrasi, atau administrasi akademik).</p>
+    <p><strong>Perizinan & profesi:</strong> Banyak lembaga menyediakan portal registrasi online untuk pengurusan izin/sertifikat resmi secara terpusat.</p>
+    <p><strong>Manfaat tambahan:</strong> Data tersimpan terstruktur, jejak proses terdokumentasi, dan input berulang dapat diminimalkan.</p>
+  </div>
+</section>
+
+<script is:inline>
+  const btn = document.getElementById('readMoreBtn');
+  const content = document.getElementById('hiddenContent');
+
+  btn?.addEventListener('click', () => {
+    content?.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.style.display = 'none'; // kalau mau toggle, hapus baris ini
+    content?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
