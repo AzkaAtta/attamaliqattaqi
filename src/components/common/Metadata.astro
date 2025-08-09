@@ -12,6 +12,7 @@ import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
+  keywords?: string[];
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   description,
   openGraph = {},
   twitter = {},
+  keywords,
 } = Astro.props;
 
 const seoProps: AstroSeoProps = merge(
@@ -61,6 +63,7 @@ const seoProps: AstroSeoProps = merge(
     description: description,
     openGraph: { url: canonical, ...openGraph },
     twitter: twitter,
+     keywords: keywords ? keywords.join(', ') : undefined,
   }
 );
 ---
