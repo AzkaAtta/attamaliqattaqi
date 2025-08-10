@@ -31,204 +31,231 @@ const whatsappReal = encodeURIComponent(
 
 <Layout metadata={metadata}>
   <Fragment slot="head">
-    <link rel="canonical" href="https://auradigital.id/layanan/jasa-registrasi-aplikasi/" />
-    <!-- GANTI contentUrl berikut menjadi URL absolut gambar hero saat deploy -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://auradigital.id/#website",
-          "url": "https://auradigital.id/",
-          "name": "AuraDigital",
-          "inLanguage": "id-ID",
-          "publisher": { "@id": "https://auradigital.id/#organization" },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://auradigital.id/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
+  <link rel="canonical" href="https://auradigital.id/layanan/jasa-registrasi-aplikasi/" />
+
+  {/*
+    NOTE:
+    - Pastikan PageLayout.astro punya <slot name="head" /> di dalam <head>.
+    - Ganti heroUrl jika path gambarnya berbeda saat deploy.
+  */}
+  {
+    (() => {
+      const pageUrl = "https://auradigital.id/layanan/jasa-registrasi-aplikasi/";
+      const heroUrl = "https://auradigital.id/layanan/jasa-registrasi-aplikasi/hero.webp";
+      const today = "2025-08-10";
+
+      const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://auradigital.id/#website",
+            "url": "https://auradigital.id/",
+            "name": "AuraDigital",
+            "inLanguage": "id-ID",
+            "publisher": { "@id": "https://auradigital.id/#organization" },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://auradigital.id/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#webpage",
+            "url": pageUrl,
+            "name": "Jasa Registrasi Aplikasi",
+            "isPartOf": { "@id": "https://auradigital.id/#website" },
+            "about": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#service" },
+            "breadcrumb": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#breadcrumb" },
+            "inLanguage": "id-ID",
+            "description": "Jasa registrasi aplikasi cepat & aman untuk Android, iOS, dan web. Layanan profesional, verifikasi terkontrol, dukungan end-to-end hingga aktif.",
+            "primaryImageOfPage": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#primaryimage" },
+            "datePublished": today,
+            "dateModified": today,
+            "publisher": { "@id": "https://auradigital.id/#organization" }
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#primaryimage",
+            "contentUrl": heroUrl,
+            "url": heroUrl,
+            "width": 1200,
+            "height": 500,
+            "inLanguage": "id-ID"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://auradigital.id/" },
+              { "@type": "ListItem", "position": 2, "name": "Layanan", "item": "https://auradigital.id/layanan/" },
+              { "@type": "ListItem", "position": 3, "name": "Jasa Registrasi Aplikasi", "item": pageUrl }
+            ]
+          },
+          {
+            "@type": "Service",
+            "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#service",
+            "name": "Jasa Registrasi Aplikasi",
+            "serviceType": "Application Registration Service",
+            "category": "ProfessionalService",
+            "provider": { "@id": "https://auradigital.id/#organization" },
+            "areaServed": { "@type": "Country", "name": "Indonesia" },
+            "audience": { "@type": "Audience", "audienceType": ["Startup","UMKM","Perusahaan","Individu"] },
+            "inLanguage": "id-ID",
+            "termsOfService": "https://auradigital.id/terms",
+            "serviceOutput": "Akun/aplikasi terdaftar dan aktif sesuai ketentuan platform.",
+            "availableChannel": [
+              {
+                "@type": "ServiceChannel",
+                "serviceUrl": pageUrl,
+                "servicePhone": { "@type": "ContactPoint", "telephone": "+62 895-4023-43693" }
+              }
+            ],
+            "hasOfferCatalog": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offerCatalog" },
+            "offers": [
+              { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-starter" },
+              { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-business" },
+              { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-enterprise" }
+            ],
+            "potentialAction": [
+              {
+                "@type": "OrderAction",
+                "target": "https://wa.me/62895402343693?text=Halo%2C%20saya%20mau%20registrasi%20aplikasi",
+                "name": "Pesan via WhatsApp"
+              },
+              { "@type": "ContactAction", "target": "https://auradigital.id/kontak", "name": "Hubungi Kami" }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offerCatalog",
+            "name": "Paket Registrasi Aplikasi",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-starter",
+                "name": "Starter (10 registrasi)",
+                "url": pageUrl,
+                "priceCurrency": "IDR",
+                "price": "300000",
+                "eligibleQuantity": { "@type": "QuantitativeValue", "value": 10, "unitCode": "EACH" },
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31",
+                "eligibleRegion": { "@type": "Country", "name": "Indonesia" }
+              },
+              {
+                "@type": "Offer",
+                "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-business",
+                "name": "Business (50 registrasi)",
+                "url": pageUrl,
+                "priceCurrency": "IDR",
+                "price": "1500000",
+                "eligibleQuantity": { "@type": "QuantitativeValue", "value": 50, "unitCode": "EACH" },
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31",
+                "eligibleRegion": { "@type": "Country", "name": "Indonesia" }
+              },
+              {
+                "@type": "Offer",
+                "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-enterprise",
+                "name": "Enterprise (Custom)",
+                "url": pageUrl,
+                "priceCurrency": "IDR",
+                "availability": "https://schema.org/PreOrder",
+                "eligibleRegion": { "@type": "Country", "name": "Indonesia" }
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#faq",
+            "inLanguage": "id-ID",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Apa itu jasa registrasi aplikasi?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Layanan profesional untuk pendaftaran aplikasi Android, iOS, dan web—mulai dari pengecekan syarat, pengisian data, unggah dokumen, hingga verifikasi berhasil."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Platform apa saja yang didukung?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Kami mendukung pendaftaran aplikasi Android, iOS, serta aplikasi berbasis web dan layanan SaaS yang memerlukan aktivasi akun terverifikasi."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Berapa lama prosesnya?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Umumnya 1–3 hari kerja setelah dokumen lengkap, tergantung kebijakan platform dan tingkat verifikasi yang diperlukan."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Dokumen apa yang diperlukan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Biasanya identitas penanggung jawab, data entitas (jika bisnis), serta bukti pendukung lain sesuai ketentuan masing-masing platform."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Bagaimana keamanan data saya?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Data diproses sesuai praktik keamanan yang baik. Kami hanya menggunakan informasi relevan dan menyimpan jejak proses untuk audit."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Apakah ada minimal order?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tidak ada minimal untuk paket satuan. Untuk volume besar tersedia harga khusus."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Bagaimana cara memesan layanan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Klik tombol WhatsApp atau isi formulir di halaman layanan. Kami kirimkan penawaran, timeline, dan langkah selanjutnya."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#howto",
+            "name": "Cara Order Jasa Registrasi Aplikasi",
+            "inLanguage": "id-ID",
+            "totalTime": "PT1H",
+            "step": [
+              { "@type": "HowToStep", "name": "Konsultasi", "text": "Hubungi via WhatsApp atau formulir dan jelaskan kebutuhan registrasi aplikasi." },
+              { "@type": "HowToStep", "name": "Kirim Dokumen", "text": "Unggah data dan berkas yang diminta sesuai ketentuan platform." },
+              { "@type": "HowToStep", "name": "Validasi & Pendaftaran", "text": "Kami memeriksa kelengkapan dan mengajukan pendaftaran sesuai SOP." },
+              { "@type": "HowToStep", "name": "Verifikasi", "text": "Proses verifikasi akun/aplikasi hingga status disetujui." },
+              { "@type": "HowToStep", "name": "Selesai", "text": "Serah terima bukti dan panduan pemanfaatan akun/aplikasi." }
+            ]
           }
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#webpage",
-          "url": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/",
-          "name": "Jasa Registrasi Aplikasi",
-          "isPartOf": { "@id": "https://auradigital.id/#website" },
-          "about": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#service" },
-          "breadcrumb": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#breadcrumb" },
-          "inLanguage": "id-ID",
-          "description": "Jasa registrasi aplikasi cepat & aman untuk Android, iOS, dan web. Layanan profesional, verifikasi terkontrol, dukungan end-to-end hingga aktif.",
-          "primaryImageOfPage": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#primaryimage" }
-        },
-        {
-          "@type": "ImageObject",
-          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#primaryimage",
-          "contentUrl": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/hero.webp",
-          "inLanguage": "id-ID"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://auradigital.id/" },
-            { "@type": "ListItem", "position": 2, "name": "Layanan", "item": "https://auradigital.id/layanan/" },
-            { "@type": "ListItem", "position": 3, "name": "Jasa Registrasi Aplikasi", "item": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/" }
-          ]
-        },
-        {
-          "@type": "Service",
-          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#service",
-          "name": "Jasa Registrasi Aplikasi",
-          "serviceType": "Application Registration Service",
-          "category": "ProfessionalService",
-          "provider": { "@id": "https://auradigital.id/#organization" },
-          "areaServed": { "@type": "Country", "name": "Indonesia" },
-          "audience": { "@type": "Audience", "audienceType": ["Startup","UMKM","Perusahaan","Individu"] },
-          "inLanguage": "id-ID",
-          "termsOfService": "https://auradigital.id/terms",
-          "serviceOutput": "Akun/aplikasi terdaftar dan aktif sesuai ketentuan platform.",
-          "availableChannel": [
-            {
-              "@type": "ServiceChannel",
-              "serviceUrl": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/",
-              "servicePhone": { "@type": "ContactPoint", "telephone": "+62 895-4023-43693" }
-            }
-          ],
-          "hasOfferCatalog": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offerCatalog" },
-          "potentialAction": [
-            {
-              "@type": "OrderAction",
-              "target": "https://wa.me/62895402343693?text=Halo%2C%20saya%20mau%20registrasi%20aplikasi",
-              "name": "Pesan via WhatsApp"
-            },
-            { "@type": "ContactAction", "target": "https://auradigital.id/kontak", "name": "Hubungi Kami" }
-          ]
-        },
-        {
-          "@type": "OfferCatalog",
-          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offerCatalog",
-          "name": "Paket Registrasi Aplikasi",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-starter",
-              "name": "Starter (10 registrasi)",
-              "url": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/",
-              "priceCurrency": "IDR",
-              "price": "300000",
-              "eligibleQuantity": { "@type": "QuantitativeValue", "value": 10, "unitCode": "EACH" },
-              "availability": "https://schema.org/InStock",
-              "priceValidUntil": "2026-12-31",
-              "eligibleRegion": { "@type": "Country", "name": "Indonesia" }
-            },
-            {
-              "@type": "Offer",
-              "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-business",
-              "name": "Business (50 registrasi)",
-              "url": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/",
-              "priceCurrency": "IDR",
-              "price": "1500000",
-              "eligibleQuantity": { "@type": "QuantitativeValue", "value": 50, "unitCode": "EACH" },
-              "availability": "https://schema.org/InStock",
-              "priceValidUntil": "2026-12-31",
-              "eligibleRegion": { "@type": "Country", "name": "Indonesia" }
-            },
-            {
-              "@type": "Offer",
-              "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#offer-enterprise",
-              "name": "Enterprise (Custom)",
-              "url": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/",
-              "priceCurrency": "IDR",
-              "availability": "https://schema.org/PreOrder",
-              "eligibleRegion": { "@type": "Country", "name": "Indonesia" }
-            }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Apa itu jasa registrasi aplikasi?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Layanan profesional untuk pendaftaran aplikasi Android, iOS, dan web—mulai dari pengecekan syarat, pengisian data, unggah dokumen, hingga verifikasi berhasil."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Platform apa saja yang didukung?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Kami mendukung pendaftaran aplikasi Android, iOS, serta aplikasi berbasis web dan layanan SaaS yang memerlukan aktivasi akun terverifikasi."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Berapa lama prosesnya?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Umumnya 1–3 hari kerja setelah dokumen lengkap, tergantung kebijakan platform dan tingkat verifikasi yang diperlukan."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Dokumen apa yang diperlukan?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Biasanya identitas penanggung jawab, data entitas (jika bisnis), serta bukti pendukung lain sesuai ketentuan masing-masing platform."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bagaimana keamanan data saya?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Data diproses sesuai praktik keamanan yang baik. Kami hanya menggunakan informasi relevan dan menyimpan jejak proses untuk audit."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Apakah ada minimal order?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Tidak ada minimal untuk paket satuan. Untuk volume besar tersedia harga khusus."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bagaimana cara memesan layanan?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Klik tombol WhatsApp atau isi formulir di halaman layanan. Kami kirimkan penawaran, timeline, dan langkah selanjutnya."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "HowTo",
-          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#howto",
-          "name": "Cara Order Jasa Registrasi Aplikasi",
-          "inLanguage": "id-ID",
-          "supply": [],
-          "tool": [],
-          "totalTime": "PT1H",
-          "step": [
-            { "@type": "HowToStep", "name": "Konsultasi", "text": "Hubungi via WhatsApp atau formulir dan jelaskan kebutuhan registrasi aplikasi." },
-            { "@type": "HowToStep", "name": "Kirim Dokumen", "text": "Unggah data dan berkas yang diminta sesuai ketentuan platform." },
-            { "@type": "HowToStep", "name": "Validasi & Pendaftaran", "text": "Kami memeriksa kelengkapan dan mengajukan pendaftaran sesuai SOP." },
-            { "@type": "HowToStep", "name": "Verifikasi", "text": "Proses verifikasi akun/aplikasi hingga status disetujui." },
-            { "@type": "HowToStep", "name": "Selesai", "text": "Serah terima bukti dan panduan pemanfaatan akun/aplikasi." }
-          ],
-          "estimatedCost": { "@type": "MonetaryAmount", "currency": "IDR", "value": "300000" }
-        }
-      ]
-    }
-    </script>
-  </Fragment>
+        ]
+      };
+
+      return (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      );
+    })()
+  }
+</Fragment>
+t>
 
   <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
     <div class="prose dark:prose-invert max-w-none mt-12 text-left">
