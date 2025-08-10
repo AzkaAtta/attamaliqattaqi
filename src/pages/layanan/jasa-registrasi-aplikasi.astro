@@ -16,7 +16,7 @@ const metadata = {
     'registrasi aplikasi toko online',
     'registrasi aplikasi sekolah',
     'registrasi aplikasi bank',
-    'registrasi aplikasi pakai ktp',
+    'registrasi aplikasi pakai KTP',
     'layanan registrasi aplikasi online',
     'registrasi aplikasi indonesia',
     'registrasi aplikasi terpercaya',
@@ -30,9 +30,9 @@ const whatsappReal = encodeURIComponent(
 ---
 
 <Layout metadata={metadata}>
-  <!-- jika Layout mendukung slot head, gunakan ini -->
   <Fragment slot="head">
     <link rel="canonical" href="https://auradigital.id/layanan/jasa-registrasi-aplikasi/" />
+    <!-- GANTI contentUrl berikut menjadi URL absolut gambar hero saat deploy -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -59,7 +59,14 @@ const whatsappReal = encodeURIComponent(
           "about": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#service" },
           "breadcrumb": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#breadcrumb" },
           "inLanguage": "id-ID",
-          "description": "Jasa registrasi aplikasi cepat & aman untuk Android, iOS, dan web. Layanan profesional, verifikasi terkontrol, dukungan end-to-end hingga aktif."
+          "description": "Jasa registrasi aplikasi cepat & aman untuk Android, iOS, dan web. Layanan profesional, verifikasi terkontrol, dukungan end-to-end hingga aktif.",
+          "primaryImageOfPage": { "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#primaryimage" }
+        },
+        {
+          "@type": "ImageObject",
+          "@id": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/#primaryimage",
+          "contentUrl": "https://auradigital.id/layanan/jasa-registrasi-aplikasi/hero.webp",
+          "inLanguage": "id-ID"
         },
         {
           "@type": "BreadcrumbList",
@@ -96,11 +103,7 @@ const whatsappReal = encodeURIComponent(
               "target": "https://wa.me/62895402343693?text=Halo%2C%20saya%20mau%20registrasi%20aplikasi",
               "name": "Pesan via WhatsApp"
             },
-            {
-              "@type": "ContactAction",
-              "target": "https://auradigital.id/kontak",
-              "name": "Hubungi Kami"
-            }
+            { "@type": "ContactAction", "target": "https://auradigital.id/kontak", "name": "Hubungi Kami" }
           ]
         },
         {
@@ -152,7 +155,7 @@ const whatsappReal = encodeURIComponent(
               "name": "Apa itu jasa registrasi aplikasi?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Layanan profesional untuk menangani proses pendaftaran aplikasi Android, iOS, dan web—mulai dari pengecekan syarat, pengisian data, unggah dokumen, hingga verifikasi berhasil."
+                "text": "Layanan profesional untuk pendaftaran aplikasi Android, iOS, dan web—mulai dari pengecekan syarat, pengisian data, unggah dokumen, hingga verifikasi berhasil."
               }
             },
             {
@@ -232,36 +235,35 @@ const whatsappReal = encodeURIComponent(
       <h1>Registrasi Aplikasi Profesional—Siap Digunakan dalam Waktu Singkat</h1>
     </div>
 
-    <!-- Hero Image -->
     <img
       src={heroImage.src}
-      alt="jasa registrasi aplikasi murah"
+      alt="Hero layanan registrasi aplikasi Android, iOS, dan web"
       class="w-full rounded-lg shadow mb-8"
       width="1200"
       height="500"
       loading="lazy"
     />
 
-    <!-- Paket Real Human -->
-    <h2 class="text-2xl font-bold mb-2">Solusi Registrasi Online untuk Bisnis dan Pribadi</h2>
+    <h2 class="text-2xl font-bold mb-2">Solusi Registrasi Aplikasi untuk Bisnis dan Pribadi</h2>
     <p class="text-gray-600 dark:text-gray-300 mb-4">
-      Dapatkan kemudahan mengurus berbagai kebutuhan <strong>registrasi aplikasi</strong>—Android, iOS, maupun web—dalam satu layanan. Kami menyediakan jasa registrasi aplikasi yang cepat, aman, dan terpercaya untuk bisnis serta individu. Mulai dari pengecekan syarat, pengisian data, unggah dokumen, hingga verifikasi resmi, semua proses kami tangani secara profesional agar Anda hemat waktu dan terhindar dari kesalahan teknis. Tinggal kirim data, kami urus sampai <em>akun/aplikasi</em> Anda aktif.
+      Dapatkan kemudahan mengurus berbagai kebutuhan <strong>registrasi aplikasi</strong>—Android, iOS, maupun web—dalam satu layanan. Kami menangani pengecekan syarat, pengisian data, unggah dokumen, hingga verifikasi resmi agar Anda hemat waktu dan terhindar dari kesalahan teknis. Tinggal kirim data, kami urus sampai <em>akun/aplikasi</em> Anda aktif.
     </p>
     <p class="text-xl font-bold text-green-600 mb-4">Mulai Rp 300.000 / 10 Registrasi Aplikasi</p>
     <a
       href={`https://wa.me/${whatsappNumber}?text=${whatsappReal}`}
       target="_blank"
       class="inline-block bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition mb-10"
-      rel="noopener"
+      rel="noopener nofollow"
+      aria-label="Pesan jasa registrasi aplikasi via WhatsApp"
     >
       💬 Pesan Registrasi Aplikasi Sekarang
     </a>
 
     <div class="my-12 border-t border-gray-300 dark:border-gray-700 relative">
-      <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-900 px-4 text-gray-500 text-sm"></span>
+      <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 px-4 text-gray-500 text-sm"></span>
     </div>
 
-     <h2>Pengenalan: Registrasi Aplikasi yang Serius, Cepat, dan Terverifikasi</h2>
+    <h2>Pengenalan: Registrasi Aplikasi yang Serius, Cepat, dan Terverifikasi</h2>
 <p>
   Di tengah ekosistem digital yang makin ketat, <strong>registrasi aplikasi</strong> bukan lagi urusan teknis sepele. Setiap platform—Android, iOS, maupun web—memiliki ketentuan, standar kualitas, hingga kebijakan kepatuhan yang wajib dipenuhi agar aplikasi benar-benar lolos dan bisa digunakan. Melalui <strong>jasa registrasi aplikasi</strong> yang profesional, proses yang biasanya memakan waktu dan rawan error dapat dialihkan ke tim berpengalaman, sehingga bisnis dan individu bisa fokus pada produk serta pemasaran.
 </p>
@@ -402,10 +404,11 @@ const whatsappReal = encodeURIComponent(
   <strong>Registrasi aplikasi</strong> yang rapi mempercepat penerimaan, menekan risiko penolakan, dan menghemat waktu tim. Dengan <strong>jasa registrasi aplikasi</strong> profesional, kamu mendapatkan proses yang terukur, patuh kebijakan, serta didampingi hingga tayang. Jika kamu menargetkan <em>registrasi aplikasi Android</em>, <em>registrasi aplikasi iOS</em>, atau aktivasi layanan web/SaaS, kami siap bantu dari awal sampai <em>go-live</em>. Mulai konsultasi sekarang, bawa aplikasimu meluncur lebih cepat—dengan listing yang jelas, aman, dan siap di-scale.
 </p>
 
+    <h3>Ikuti Update di Instagram</h3>
     <p>
       Untuk mendapatkan update fitur, tips <strong>registrasi aplikasi</strong>, studi kasus, dan promo terbaru, silakan ikuti
       <a href="https://instagram.com/jasa.registrasi.cepat" target="_blank" rel="noopener nofollow">akun Instagram kami</a>.
-      Kami rutin berbagi insight praktis yang bisa langsung kamu terapkan.
+      Kami rutin berbagi insight praktis yang bisa langsung Anda terapkan.
     </p>
   </section>
 </Layout>
