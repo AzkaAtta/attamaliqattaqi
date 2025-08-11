@@ -39,26 +39,33 @@ const whatsappReal = encodeURIComponent(
         "@graph": [
           {
             "@type": "WebSite",
-            "@id": "https://auradigital.id/#website",
-            "url": "https://auradigital.id/",
-            "name": "AuraDigital",
-            "inLanguage": "id-ID"
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://auradigital.id/layanan/jasa-registrasi-online#webpage",
-            "url": "https://auradigital.id/layanan/jasa-registrasi-online",
-            "name": "Jasa Registrasi Online",
-            "isPartOf": { "@id": "https://auradigital.id/#website" },
-            "breadcrumb": { "@id": "https://auradigital.id/layanan/jasa-registrasi-online#breadcrumb" },
-            "about": { "@id": "https://auradigital.id/layanan/jasa-registrasi-online#service" },
-            "inLanguage": "id-ID",
-            "description": "Layanan jasa registrasi online cepat dan aman. Proses dibantu end-to-end sampai pendaftaran berhasil."
-          },
+      "@id": "https://auradigital.id/#website",
+      "url": "https://auradigital.id/",
+      "name": "AuraDigital",
+      "inLanguage": "id-ID"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://auradigital.id/layanan/jasa-registrasi-online#webpage",
+      "url": "https://auradigital.id/layanan/jasa-registrasi-online",
+      "name": "Jasa Registrasi Online",
+      "isPartOf": { 
+        "@type": "WebSite",
+        "@id": "https://auradigital.id/#website" 
+      },
+      "breadcrumb": { 
+        "@id": "https://auradigital.id/layanan/jasa-registrasi-online#breadcrumb" 
+      },
+      "mainEntity": { 
+        "@id": "https://auradigital.id/layanan/jasa-registrasi-online#faq" 
+      },
+      "inLanguage": "id-ID",
+      "description": "Layanan jasa registrasi online cepat dan aman. Proses dibantu end-to-end sampai pendaftaran berhasil."
+    },
           {
             "@type": "BreadcrumbList",
-            "@id": "https://auradigital.id/layanan/jasa-registrasi-online#breadcrumb",
-            "itemListElement": [
+      "@id": "https://auradigital.id/layanan/jasa-registrasi-online#breadcrumb",
+      "itemListElement": [
               {
                 "@type": "ListItem",
                 "position": 1,
@@ -81,42 +88,43 @@ const whatsappReal = encodeURIComponent(
           },
           {
             "@type": "Service",
-            "@id": "https://auradigital.id/layanan/jasa-registrasi-online#service",
-            "name": "Jasa Registrasi Online",
-            "serviceType": "Registration Service",
-            "category": "ProfessionalService",
-            "areaServed": { "@type": "Country", "name": "Indonesia" },
-            "audience": {
-              "@type": "Audience",
-              "audienceType": ["UMKM","Perusahaan","Individu"]
-            },
-            "offers": { "@id": "https://auradigital.id/layanan/jasa-registrasi-online#offer" }
+      "@id": "https://auradigital.id/layanan/jasa-registrasi-online#service",
+      "name": "Jasa Registrasi Online",
+      "serviceType": "RegistrationService",
+      "category": "OnlineRegistrationService",
+      "areaServed": { 
+        "@type": "Country", 
+        "name": "Indonesia" 
+      },
+      "audience": {
+        "@type": "Audience",
+        "name": ["UMKM", "Perusahaan", "Individu"]
+      },
+      "offers": { 
+        "@id": "https://auradigital.id/layanan/jasa-registrasi-online#offer" 
+      },
+          {
+             "@type": "Offer",
+      "@id": "https://auradigital.id/layanan/jasa-registrasi-online#offer",
+      "name": "Jasa Registrasi Online (Satuan)",
+      "url": "https://auradigital.id/layanan/jasa-registrasi-online",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "IDR",
+      "price": "6000",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "priceCurrency": "IDR",
+        "price": "6000",
+        "unitCode": "C62"
+      },
+      "eligibleRegion": { 
+        "@type": "Country", 
+        "name": "Indonesia"
           },
           {
-            "@type": "Offer",
-            "@id": "https://auradigital.id/layanan/jasa-registrasi-online#offer",
-            "name": "Jasa Registrasi Online (Satuan)",
-            "url": "https://auradigital.id/layanan/jasa-registrasi-online",
-            "availability": "https://schema.org/InStock",
-            "priceCurrency": "IDR",
-            "price": "6000",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "priceCurrency": "IDR",
-              "price": "6000",
-              "unitCode": "EACH",
-              "referenceQuantity": {
-                "@type": "QuantitativeValue",
-                "value": 1,
-                "unitCode": "EACH"
-              }
-            },
-            "eligibleRegion": { "@type": "Country", "name": "Indonesia" }
-          },
-          {
-            "@type": "FAQPage",
-            "@id": "https://auradigital.id/layanan/jasa-registrasi-online#faq",
-            "mainEntity": [
+             "@type": "FAQPage",
+      "@id": "https://auradigital.id/layanan/jasa-registrasi-online#faq",
+      "mainEntity": [
               {
                 "@type": "Question",
                 "name": "Berapa harga jasa registrasi online?",
