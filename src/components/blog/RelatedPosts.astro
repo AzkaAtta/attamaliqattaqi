@@ -9,15 +9,22 @@ interface Props {
   post: Post;
 }
 
+interface RelatedPost {
+  id: string;
+  slug: string;
+  title: string;
+  description?: string;
+  tags?: string[];
+}
+
 const { post } = Astro.props;
 
-// 1. Tambahkan error handling dan fallback
-let relatedPosts = [];
+// 1. Type the related posts array
+let relatedPosts: RelatedPost[] = [];
 try {
   relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
 } catch (error) {
   console.error('Error loading related posts:', error);
-  relatedPosts = [];
 }
 
 // 2. Generate schema.org data
@@ -34,7 +41,7 @@ const relatedPostsSchema = {
 };
 ---
 
-<!-- 3. Wrapper dengan ARIA label dan microdata -->
+<!-- 3. Wrapper with proper typing -->
 <section 
   class="related-posts" 
   aria-label="Artikel terkait"
@@ -46,21 +53,14 @@ const relatedPostsSchema = {
       {relatedPosts.length > 0 ? (
         <BlogHighlightedPosts
           classes={{
-            container: 'pt-0 lg:pt-0 md:pt-0 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
+            container: 'pt-0 lg:pt-0 md:pt-0 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'
           }}
           title="Artikel Terkait Lainnya"
           linkText="Lihat Semua Artikel"
           linkUrl={getBlogPermalink()}
           postIds={relatedPosts.map((post) => post.id)}
-          // 4. Tambahkan prop SEO
-          seoAttributes={{
-            "itemprop": "itemListElement",
-            "itemtype": "http://schema.org/ListItem",
-            "data-position": "{index + 1}"
-          }}
         />
       ) : (
-        <!-- 5. Fallback content untuk SEO -->
         <div class="bg-gray-50 p-4 rounded-lg" itemprop="itemListElement">
           <p>Baca juga artikel populer kami:</p>
           <a 
@@ -73,15 +73,14 @@ const relatedPostsSchema = {
         </div>
       )}
 
-      <!-- 6. Structured Data untuk Google -->
-      <script type="application/ld+json">
+      <!-- 4. Fixed script tag with is:inline -->
+      <script is:inline type="application/ld+json">
         {JSON.stringify(relatedPostsSchema)}
       </script>
     </>
   )}
 </section>
 
-<!-- 7. CSS Optimized -->
 <style is:global>
   .related-posts {
     scroll-margin-top: 2rem;
