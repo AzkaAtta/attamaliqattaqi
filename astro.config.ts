@@ -1,50 +1,90 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+
 import { defineConfig } from 'astro/config';
+
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
+import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
+import type { AstroIntegration } from 'astro';
+
 import astrowind from './vendor/integration';
+
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const hasExternalScripts = false;
+const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
+  hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+
 export default defineConfig({
-  site: 'https://auradigital.id', // ✅ Canonical URL
   output: 'static',
 
   integrations: [
-    tailwind({ applyBaseStyles: false }),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     sitemap(),
     mdx(),
     icon({
-      include: { 
+      include: {
         tabler: ['*'],
-        'flat-color-icons': ['template', 'gallery', /* ... */]
-      }
+        'flat-color-icons': [
+          'template',
+          'gallery',
+          'approval',
+          'document',
+          'advertising',
+          'currency-exchange',
+          'voice-presentation',
+          'business-contact',
+          'database',
+        ],
+      },
     }),
+
+    ...whenExternalScripts(() =>
+      partytown({
+        config: { forward: ['dataLayer.push'] },
+      })
+    ),
+
     compress({
       CSS: true,
-      HTML: { 'html-minifier-terser': { removeAttributeQuotes: false } },
+      HTML: {
+        'html-minifier-terser': {
+          removeAttributeQuotes: false,
+        },
+      },
+      Image: false,
       JavaScript: true,
+      SVG: false,
+      Logger: 1,
     }),
-    astrowind({ config: './src/config.yaml' }),
+
+    astrowind({
+      config: './src/config.yaml',
+    }),
   ],
 
   image: {
-    service: { entrypoint: 'astro/assets/services/sharp' }, // ✅ Optimisasi gambar
     domains: ['cdn.pixabay.com'],
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin, 'remark-gfm'], // ✅ Support tabel
+    remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
-    syntaxHighlight: 'shiki',
   },
 
   vite: {
-    resolve: { alias: { '~': path.resolve(__dirname, './src') } },
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, './src'),
+      },
+    },
   },
 });
