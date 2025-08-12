@@ -1,31 +1,97 @@
 ---
 import { APP_BLOG } from 'astrowind:config';
-
 import { getRelatedPosts } from '~/utils/blog';
 import BlogHighlightedPosts from '../widgets/BlogHighlightedPosts.astro';
 import type { Post } from '~/types';
 import { getBlogPermalink } from '~/utils/permalinks';
 
-export interface Props {
+interface Props {
   post: Post;
 }
 
 const { post } = Astro.props;
 
-const relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
+// 1. Tambahkan error handling dan fallback
+let relatedPosts = [];
+try {
+  relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
+} catch (error) {
+  console.error('Error loading related posts:', error);
+  relatedPosts = [];
+}
+
+// 2. Generate schema.org data
+const relatedPostsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": relatedPosts.map((post, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": getBlogPermalink(post.slug),
+    "name": post.title,
+    "description": post.description || ""
+  }))
+};
 ---
 
-{
-  APP_BLOG.isRelatedPostsEnabled ? (
-    <BlogHighlightedPosts
-      classes={{
-        container:
-          'pt-0 lg:pt-0 md:pt-0 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
-      }}
-      title="Related Posts"
-      linkText="View All Posts"
-      linkUrl={getBlogPermalink()}
-      postIds={relatedPosts.map((post) => post.id)}
-    />
-  ) : null
-}
+<!-- 3. Wrapper dengan ARIA label dan microdata -->
+<section 
+  class="related-posts" 
+  aria-label="Artikel terkait"
+  itemscope 
+  itemtype="http://schema.org/ItemList"
+>
+  {APP_BLOG.isRelatedPostsEnabled && (
+    <>
+      {relatedPosts.length > 0 ? (
+        <BlogHighlightedPosts
+          classes={{
+            container: 'pt-0 lg:pt-0 md:pt-0 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
+          }}
+          title="Artikel Terkait Lainnya"
+          linkText="Lihat Semua Artikel"
+          linkUrl={getBlogPermalink()}
+          postIds={relatedPosts.map((post) => post.id)}
+          // 4. Tambahkan prop SEO
+          seoAttributes={{
+            "itemprop": "itemListElement",
+            "itemtype": "http://schema.org/ListItem",
+            "data-position": "{index + 1}"
+          }}
+        />
+      ) : (
+        <!-- 5. Fallback content untuk SEO -->
+        <div class="bg-gray-50 p-4 rounded-lg" itemprop="itemListElement">
+          <p>Baca juga artikel populer kami:</p>
+          <a 
+            href={getBlogPermalink()} 
+            class="text-primary-600 hover:underline"
+            aria-label="Jelajahi semua artikel"
+          >
+            Jelajahi Blog
+          </a>
+        </div>
+      )}
+
+      <!-- 6. Structured Data untuk Google -->
+      <script type="application/ld+json">
+        {JSON.stringify(relatedPostsSchema)}
+      </script>
+    </>
+  )}
+</section>
+
+<!-- 7. CSS Optimized -->
+<style is:global>
+  .related-posts {
+    scroll-margin-top: 2rem;
+    position: relative;
+  }
+  .related-posts::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    margin: 2rem 0;
+  }
+</style>
