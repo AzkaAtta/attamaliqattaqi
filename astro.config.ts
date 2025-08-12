@@ -21,7 +21,6 @@ const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
-// 🔥 SEO OPTIMIZATION: Added canonical URL and trailing slash config
 export default defineConfig({
   site: 'https://auradigital.id', // 🔥 WAJIB: Ganti dengan domain Anda
   trailingSlash: 'ignore', // 🔥 Hindari duplicate content (e.g., /path vs /path/)
