@@ -2,32 +2,73 @@
 export interface Props {
   title: string;
   description: string;
-  keywords?: string;
+  keywords?: string; // ✅ Pertahankan keywords
   canonical?: string;
-  image?: string; // untuk open graph thumbnail
+  image?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article'; // ✅ Tambahkan tipe konten
 }
 
-const { title, description, keywords, canonical, image } = Astro.props;
+const { 
+  title, 
+  description, 
+  keywords = 'jasa registrasi bank, buka rekening online, layanan perbankan', // ✅ Default keywords
+  canonical,
+  image,
+  noindex = false,
+  type = 'website' 
+} = Astro.props;
 ---
 
 <head>
-  <!-- Meta Dasar -->
-  <title>{title}</title>
+  <!-- 1. Meta Dasar (Termasuk Keywords) -->
+  <title>{title} | AuraDigital</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content={keywords || ''} />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href={canonical || Astro.url} />
+  <meta name="keywords" content={keywords} /> <!-- ✅ Dipertahankan -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'}" />
 
-  <!-- Open Graph -->
+  <!-- 2. Canonical URL -->
+  <link rel="canonical" href={canonical || `${import.meta.env.SITE}${Astro.url.pathname}`} />
+
+  <!-- 3. Open Graph (Dioptimalkan) -->
+  <meta property="og:type" content={type} /> <!-- ✅ Bisa untuk artikel/blog -->
+  <meta property="og:locale" content="id_ID" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonical || Astro.url} />
-  {image && <meta property="og:image" content={image} />}
+  <meta property="og:url" content={canonical || `${import.meta.env.SITE}${Astro.url.pathname}`} />
+  <meta property="og:image" content={image || `${import.meta.env.SITE}/og-default.jpg`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="AuraDigital" />
 
-  <!-- Twitter Card -->
+  <!-- 4. Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  {image && <meta name="twitter:image" content={image} />}
+  <meta name="twitter:image" content={image || `${import.meta.env.SITE}/og-default.jpg`} />
+  <!-- Hapus jika tidak punya akun Twitter -->
+  <meta name="twitter:site" content="@auradigitalid" />
+  <meta name="twitter:creator" content="@auradigitalid" />
+
+  <!-- 5. Skema Organisasi (Wajib) -->
+  <script is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "AuraDigital",
+      "url": "${import.meta.env.SITE}",
+      "logo": "${import.meta.env.SITE}/logo.png",
+      "description": "${description}",
+      "keywords": "${keywords}", <!-- ✅ Sertakan keywords di schema -->
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jakarta",
+        "addressRegion": "DKI Jakarta"
+      }
+    }
+  </script>
+
+  <!-- 6. Preload Resource -->
+  <link rel="preconnect" href="https://cdn.pixabay.com" crossorigin />
 </head>
