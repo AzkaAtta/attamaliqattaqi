@@ -1,22 +1,22 @@
-// astro.config.mjs
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import mdx from '@astrojs/mdx';
-import remarkGfm from 'remark-gfm';
+import remarkSocialCards from 'remark-social-cards'; // Untuk OG image otomatis
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://auradigital.id', // ✅ Ganti dengan domain Anda
-  trailingSlash: 'ignore', // ✅ Hindari duplicate URL (contoh: /path vs /path/)
+  site: 'https://auradigital.id',
+  trailingSlash: 'never',
   
   integrations: [
-    sitemap(), // ✅ Auto-generate sitemap.xml
-    mdx({
-      remarkPlugins: [remarkGfm] // ✅ Support tabel di MDX
+    sitemap({
+      filter: (url) => !url.includes('/admin') // Exclude private pages
     })
   ],
 
   markdown: {
-    remarkPlugins: [remarkGfm] // ✅ Formatting markdown
+    remarkPlugins: [
+      [remarkSocialCards, { 
+        platforms: ['instagram', 'tiktok', 'youtube'] 
+      }]
+    ]
   }
 });
