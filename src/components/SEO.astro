@@ -2,17 +2,17 @@
 export interface Props {
   title: string;
   description: string;
-  keywords?: string; // ✅ Pertahankan keywords
+  keywords?: string;
   canonical?: string;
   image?: string;
   noindex?: boolean;
-  type?: 'website' | 'article'; // ✅ Tambahkan tipe konten
+  type?: 'website' | 'article';
 }
 
 const { 
   title, 
   description, 
-  keywords = 'jasa registrasi bank, buka rekening online, layanan perbankan', // ✅ Default keywords
+  keywords = 'jasa registrasi bank, buka rekening online, jasa rating ulasan map, jasa komentar, jasa like, jasa view, jasa engagement media sosial, jasa sosial media, jasa report',
   canonical,
   image,
   noindex = false,
@@ -21,18 +21,18 @@ const {
 ---
 
 <head>
-  <!-- 1. Meta Dasar (Termasuk Keywords) -->
+  <!-- 1. Meta Dasar -->
   <title>{title} | AuraDigital</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content={keywords} /> <!-- ✅ Dipertahankan -->
+  <meta name="keywords" content={keywords} />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'}" />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 
   <!-- 2. Canonical URL -->
   <link rel="canonical" href={canonical || `${import.meta.env.SITE}${Astro.url.pathname}`} />
 
-  <!-- 3. Open Graph (Dioptimalkan) -->
-  <meta property="og:type" content={type} /> <!-- ✅ Bisa untuk artikel/blog -->
+  <!-- 3. Open Graph -->
+  <meta property="og:type" content={type} />
   <meta property="og:locale" content="id_ID" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -47,11 +47,10 @@ const {
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={image || `${import.meta.env.SITE}/og-default.jpg`} />
-  <!-- Hapus jika tidak punya akun Twitter -->
   <meta name="twitter:site" content="@auradigitalid" />
   <meta name="twitter:creator" content="@auradigitalid" />
 
-  <!-- 5. Skema Organisasi (Wajib) -->
+  <!-- 5. Skema Organisasi -->
   <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -60,7 +59,7 @@ const {
       "url": "${import.meta.env.SITE}",
       "logo": "${import.meta.env.SITE}/logo.png",
       "description": "${description}",
-      "keywords": "${keywords}", <!-- ✅ Sertakan keywords di schema -->
+      "keywords": "${keywords}",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Jakarta",
