@@ -9,39 +9,28 @@ interface Props {
   post: Post;
 }
 
+// Pastikan interface RelatedPost sesuai dengan return getRelatedPosts()
 interface RelatedPost {
   id: string;
   slug: string;
   title: string;
   description?: string;
-  tags?: string[];
 }
 
 const { post } = Astro.props;
 
-// 1. Type the related posts array
 let relatedPosts: RelatedPost[] = [];
 try {
-  relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
+  // Type assertion ke RelatedPost[]
+  relatedPosts = post.tags ? (await getRelatedPosts(post, 4) as unknown as RelatedPost[]) : [];
 } catch (error) {
   console.error('Error loading related posts:', error);
 }
 
-// 2. Generate schema.org data
-const relatedPostsSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": relatedPosts.map((post, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "url": getBlogPermalink(post.slug),
-    "name": post.title,
-    "description": post.description || ""
-  }))
-};
+// Generate URL tanpa parameter jika getBlogPermalink tidak menerima slug
+const baseBlogUrl = getBlogPermalink();
 ---
 
-<!-- 3. Wrapper with proper typing -->
 <section 
   class="related-posts" 
   aria-label="Artikel terkait"
@@ -57,14 +46,14 @@ const relatedPostsSchema = {
           }}
           title="Artikel Terkait Lainnya"
           linkText="Lihat Semua Artikel"
-          linkUrl={getBlogPermalink()}
+          linkUrl={baseBlogUrl}
           postIds={relatedPosts.map((post) => post.id)}
         />
       ) : (
         <div class="bg-gray-50 p-4 rounded-lg" itemprop="itemListElement">
           <p>Baca juga artikel populer kami:</p>
           <a 
-            href={getBlogPermalink()} 
+            href={baseBlogUrl} 
             class="text-primary-600 hover:underline"
             aria-label="Jelajahi semua artikel"
           >
@@ -73,9 +62,19 @@ const relatedPostsSchema = {
         </div>
       )}
 
-      <!-- 4. Fixed script tag with is:inline -->
+      <!-- Structured Data -->
       <script is:inline type="application/ld+json">
-        {JSON.stringify(relatedPostsSchema)}
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": relatedPosts.map((post, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "url": `${baseBlogUrl}${post.slug}`, // Gabungkan manual jika needed
+            "name": post.title,
+            "description": post.description || ""
+          }))
+        }
       </script>
     </>
   )}
