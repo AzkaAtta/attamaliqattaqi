@@ -1,33 +1,29 @@
 // src/pages/rss.xml.ts
 import rss from '@astrojs/rss';
-import { SITE } from '../config';
+import { SITE } from '@/config';
+import { getCollection } from 'astro:content';
+import type { APIRoute } from 'astro';
 
-export async function GET(context) {
-  // Ganti dengan konten layanan Anda
-  const services = [
-    {
-      title: "Jasa Google Maps Review Profesional",
-      description: "Tambah ulasan & rating 5 bintang di Google Maps dari akun real. Hasil permanen & aman.",
-      link: "/layanan/jasa-google-maps/",
-      pubDate: new Date("2023-08-12"),
-    },
-    {
-      title: "Jasa Buzzer Instagram Terpercaya",
-      description: "Tingkatkan engagement Instagram dengan like, view, dan komentar real dari akun aktif.",
-      link: "/layanan/jasa-buzzer-instagram/",
-      pubDate: new Date("2023-08-10"),
-    }
-  ];
-
+export const GET: APIRoute = async (context) => {
+  const posts = await getCollection('post');
+  
   return rss({
-    title: `${SITE.title} | Layanan Profesional`,
+    title: `${SITE.title} | Blog & Layanan`,
     description: SITE.description,
-    site: context.site,
-    items: services.map((service) => ({
-      title: service.title,
-      description: service.description,
-      link: service.link,
-      pubDate: service.pubDate,
-    })),
+    site: context.site || SITE.url,
+    stylesheet: '/rss/styles.xsl',
+    items: posts
+      .filter(post => !post.data.draft) // Exclude drafts
+      .map(post => ({
+        title: post.data.title,
+        description: post.data.excerpt || SITE.description,
+        link: `/blog/${post.slug}/`,
+        pubDate: post.data.publishDate || new Date(),
+        customData: `
+          <author>${post.data.author || SITE.title}</author>
+          <category>${post.data.category || 'Digital Marketing'}</category>
+          ${post.data.image ? `<enclosure url="${new URL(post.data.image, SITE.url).href}" type="image/${post.data.image.split('.').pop()}" />` : ''}
+        `,
+      })),
   });
-}
+};
