@@ -1,37 +1,33 @@
-import { getRssString } from '@astrojs/rss';
+// src/pages/rss.xml.ts
+import rss from '@astrojs/rss';
+import { SITE } from '../config';
 
-import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
-import { fetchPosts } from '~/utils/blog';
-import { getPermalink } from '~/utils/permalinks';
-
-export const GET = async () => {
-  if (!APP_BLOG.isEnabled) {
-    return new Response(null, {
-      status: 404,
-      statusText: 'Not found',
-    });
-  }
-
-  const posts = await fetchPosts();
-
-  const rss = await getRssString({
-    title: `${SITE.name}’s Blog`,
-    description: METADATA?.description || '',
-    site: import.meta.env.SITE,
-
-    items: posts.map((post) => ({
-      link: getPermalink(post.permalink, 'post'),
-      title: post.title,
-      description: post.excerpt,
-      pubDate: post.publishDate,
-    })),
-
-    trailingSlash: SITE.trailingSlash,
-  });
-
-  return new Response(rss, {
-    headers: {
-      'Content-Type': 'application/xml',
+export async function GET(context) {
+  // Ganti dengan konten layanan Anda
+  const services = [
+    {
+      title: "Jasa Google Maps Review Profesional",
+      description: "Tambah ulasan & rating 5 bintang di Google Maps dari akun real. Hasil permanen & aman.",
+      link: "/layanan/jasa-google-maps/",
+      pubDate: new Date("2023-08-12"),
     },
+    {
+      title: "Jasa Buzzer Instagram Terpercaya",
+      description: "Tingkatkan engagement Instagram dengan like, view, dan komentar real dari akun aktif.",
+      link: "/layanan/jasa-buzzer-instagram/",
+      pubDate: new Date("2023-08-10"),
+    }
+  ];
+
+  return rss({
+    title: `${SITE.title} | Layanan Profesional`,
+    description: SITE.description,
+    site: context.site,
+    items: services.map((service) => ({
+      title: service.title,
+      description: service.description,
+      link: service.link,
+      pubDate: service.pubDate,
+    })),
   });
-};
+}
