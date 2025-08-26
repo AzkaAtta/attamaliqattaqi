@@ -43,7 +43,7 @@ export const headerData = {
           href: getPermalink('/about'),
         },
         {
-          text: 'Contact',
+          text: 'Kontak',
           href: getPermalink('/contact'),
         },
         {
