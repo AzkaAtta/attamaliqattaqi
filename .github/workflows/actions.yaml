@@ -2,10 +2,8 @@ name: Build & Deploy Astro
 
 on:
   push:
-    branches: [ "main" ]     # deploy hanya saat push ke main
-  pull_request:
-    branches: [ "main" ]     # PR tetap dibuild (tanpa deploy)
-  workflow_dispatch:
+    branches: [ "main" ]        # jalan kalau push ke main
+  workflow_dispatch:            # bisa run manual
 
 permissions:
   contents: read
@@ -29,14 +27,22 @@ jobs:
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
-      # ✅ cegah E403 dari registry/auth yang nyangkut
       - name: Sanitize npm config (public registry, no auth)
         run: |
+          # hapus file .npmrc yang bisa bikin error
+          rm -f .npmrc $HOME/.npmrc || true
+
+          # pastikan registry publik
           npm config set registry https://registry.npmjs.org/
-          npm config set always-auth false
+
+          # hapus kemungkinan token/kredensial yang nyangkut
           npm config delete //registry.npmjs.org/:_authToken || true
-          rm -f .npmrc || true
-          rm -f $HOME/.npmrc || true
+          npm config delete //registry.npmjs.org/:username || true
+          npm config delete //registry.npmjs.org/:_password || true
+          npm config delete //registry.npmjs.org/:email || true
+
+          # debug: tampilkan config npm aktif
+          npm config list
 
       - name: Install deps
         run: npm ci --no-audit --no-fund
@@ -50,8 +56,6 @@ jobs:
           path: ./dist
 
   deploy:
-    # 🚫 jangan deploy untuk pull_request
-    if: ${{ github.event_name == 'push' }}
     needs: build
     runs-on: ubuntu-latest
     environment:
