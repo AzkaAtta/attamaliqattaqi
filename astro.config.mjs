@@ -1,33 +1,43 @@
 // astro.config.mjs
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { fileURLToPath } from 'url';
 
 export default defineConfig({
-  // WAJIB: domain publik kamu
+  // domain publik kamu
   site: 'https://auradigital.id',
 
-  // Biar konsisten dengan canonical kamu
+  // rute pakai trailing slash (sesuaikan dengan halaman kamu)
   trailingSlash: 'always',
+
+  // penting untuk GitHub Pages / hosting statis
+  output: 'static',
 
   integrations: [
     sitemap({
-      // kalau halamanmu banyak, tetap 1 index + 1 part file selama < entryLimit
       entryLimit: 50000,
-
-      // keluarkan halaman yang tak perlu diindeks
       filter: (url) => !['/404/', '/search/'].some((p) => url.startsWith(p)),
-
-      // set meta per URL (opsional tapi rapi)
       serialize: (item) => ({
         url: item.url,
-        changefreq: item.url === '/' ? 'weekly'
+        changefreq:
+          item.url === '/' ? 'weekly'
           : item.url.startsWith('/layanan/') ? 'weekly'
           : 'monthly',
-        priority: item.url === '/' ? 1.0
+        priority:
+          item.url === '/' ? 1.0
           : item.url.startsWith('/layanan/') ? 0.8
           : 0.6,
-        lastmod: new Date().toISOString().slice(0, 10), // YYYY-MM-DD
+        lastmod: new Date().toISOString().slice(0, 10),
       }),
     }),
   ],
+
+  vite: {
+    resolve: {
+      alias: {
+        // ⬇️ ini yang bikin import "@/config" bisa ditemukan
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
+  },
 });
